@@ -15,11 +15,25 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  flutter_bloc: 
+  freezed:
+  get_it: 
+  injectable: 
+  shared_preferences:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: 
+  json_serializable: 
+  injectable_generator:
 
-  flutter_lints: ^2.0.0
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true

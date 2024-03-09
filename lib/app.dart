@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'tasks_list/tasks_list_view.dart';
-import 'add_task/add_task_view.dart';
+import 'features/tasks/task_list/tasks_list_view.dart';
+import 'features/tasks/add_task/add_task_view.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
   const MyApp({
     super.key
   });
+
+
+  
 
   @override
   Widget build(BuildContext context) {

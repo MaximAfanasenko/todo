@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:todo/add_task/add_screen_arguments.dart';
+import 'package:todo/features/tasks/add_task/add_screen_arguments.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
