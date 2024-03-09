@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:todo/src/add_task/add_screen_arguments.dart';
+import 'package:todo/add_task/add_screen_arguments.dart';
 
 import '../add_task/add_task_view.dart';
 import 'task_item.dart';
