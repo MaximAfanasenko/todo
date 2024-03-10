@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
                     return AddTaskView(titleController: TextEditingController(), textController: TextEditingController());
                   case TasksListView.routeName:
                   default:
-                    return const TasksListView();
+                    return TasksListView();
                 }
               },
             );

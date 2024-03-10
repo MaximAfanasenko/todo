@@ -10,23 +10,29 @@ import '../add_task/add_task_view.dart';
 import 'task_item.dart';
 
 /// Displays a list of SampleItems.
-class TasksListView extends StatefulWidget {
-  const TasksListView({
-    super.key,
-  });
+// class TasksListView extends StatefulWidget {
+//   const TasksListView({
+//     super.key,
+//   });
 
-  static const routeName = '/';
+//   static const routeName = '/';
 
-  @override
-  State<TasksListView> createState() => _TasksListViewState();
-}
+//   @override
+//   State<TasksListView> createState() => _TasksListViewState();
+// }
 
-class _TasksListViewState extends State<TasksListView> {
+
+class TasksListView extends StatelessWidget {
+  TasksListView({super.key});
+
   Future<void> fetchData() async {
     // ...
   }
+  static const routeName = '/';
 
-  List<TaskItem> items = List.empty(growable: true);
+  final List<TaskItem> items = List.empty(growable: true);
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +47,19 @@ class _TasksListViewState extends State<TasksListView> {
                 onPressed: () async {
                   var addScreenArgumentsJsonString = (await Navigator.pushNamed(
                       context, AddTaskView.routeName)) as String;
-
+                  
                   var addScreenArgumentsMap =
                       jsonDecode(addScreenArgumentsJsonString);
-
+                  
                   var addScreenArguments =
                       AddScreenArguments.fromJson(addScreenArgumentsMap);
 
-                  setState(() {
-                    items.add(TaskItem(
-                        addScreenArguments.title,
-                        addScreenArguments.text,
-                        addScreenArguments.selectedDeadline));
-                  });
+                  //setState(() {
+                    // items.add(TaskItem(
+                    //     addScreenArguments.title,
+                    //     addScreenArguments.text,
+                    //     addScreenArguments.selectedDeadline));
+                  //});
 
                   var str = addScreenArguments.toString();
                   print('Data from Second Screen: $str');
