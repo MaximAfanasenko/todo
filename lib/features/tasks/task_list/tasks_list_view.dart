@@ -9,19 +9,6 @@ import 'package:todo/features/tasks/task_list/bloc/tasks_bloc.dart';
 import '../add_task/add_task_view.dart';
 import 'task_item.dart';
 
-/// Displays a list of SampleItems.
-// class TasksListView extends StatefulWidget {
-//   const TasksListView({
-//     super.key,
-//   });
-
-//   static const routeName = '/';
-
-//   @override
-//   State<TasksListView> createState() => _TasksListViewState();
-// }
-
-
 class TasksListView extends StatelessWidget {
   TasksListView({super.key});
 
@@ -31,8 +18,6 @@ class TasksListView extends StatelessWidget {
   static const routeName = '/';
 
   final List<TaskItem> items = List.empty(growable: true);
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +32,18 @@ class TasksListView extends StatelessWidget {
                 onPressed: () async {
                   var addScreenArgumentsJsonString = (await Navigator.pushNamed(
                       context, AddTaskView.routeName)) as String;
-                  
+
                   var addScreenArgumentsMap =
                       jsonDecode(addScreenArgumentsJsonString);
-                  
+
                   var addScreenArguments =
                       AddScreenArguments.fromJson(addScreenArgumentsMap);
 
                   //setState(() {
-                    // items.add(TaskItem(
-                    //     addScreenArguments.title,
-                    //     addScreenArguments.text,
-                    //     addScreenArguments.selectedDeadline));
+                  // items.add(TaskItem(
+                  //     addScreenArguments.title,
+                  //     addScreenArguments.text,
+                  //     addScreenArguments.selectedDeadline));
                   //});
 
                   var str = addScreenArguments.toString();
@@ -67,23 +52,27 @@ class TasksListView extends StatelessWidget {
               ),
             ],
           ),
-          body: ListView.builder(
-            restorationId: 'sampleItemListView',
-            itemCount: items.length,
-            itemBuilder: (BuildContext context, int index) {
-              final item = items[index];
+          body: BlocBuilder<TasksBloc, TasksState>(
+            builder: (context, state) {
+              return state.when(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                data: (todos) {
+                  if (todos.isEmpty) {
+                    return const Center(child: Text('No Data'));
+                  }
 
-              return ListTile(
-                  title: Text(item.title, maxLines: 1),
-                  subtitle: Text(item.text, maxLines: 2),
-                  leading: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: item.expired ? Colors.red : Colors.green),
-                  ),
-                  onTap: () {});
+                  return ListView(
+                    children: todos
+                        .map(
+                          (e) => ListTile(
+                            title: Text(e.name),
+                            subtitle: Text(e.createdAt.toIso8601String()),
+                          ),
+                        )
+                        .toList(),
+                  );
+                },
+              );
             },
           ),
         ));

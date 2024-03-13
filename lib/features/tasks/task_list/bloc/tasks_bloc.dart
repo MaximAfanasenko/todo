@@ -17,7 +17,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         .listen((todos) => add(TasksEvent.setData(todos)));
 
     on<_LoadEvent>((_, emit) {
-      service.readData();
+      service.readData();      
       emit(TasksState.loading());
     });
 

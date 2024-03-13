@@ -41,7 +41,6 @@ class AddTaskView extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(
                     onPressed: () async {
-
                       var datePickingResult = await showDatePicker(
                           context: context,
                           firstDate:
@@ -50,7 +49,9 @@ class AddTaskView extends StatelessWidget {
                               DateTime.now().add(const Duration(days: 60)));
 
                       var addScreenArguments = AddScreenArguments(
-                          titleController.text, textController.text, datePickingResult!);
+                          titleController.text,
+                          textController.text,
+                          datePickingResult!);
 
                       var addScreenArgumentsJson =
                           jsonEncode(addScreenArguments);
