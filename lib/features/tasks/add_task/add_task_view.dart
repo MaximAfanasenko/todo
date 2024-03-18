@@ -53,12 +53,7 @@ class AddTaskView extends StatelessWidget {
                           textController.text,
                           datePickingResult!);
 
-                      var addScreenArgumentsJson =
-                          jsonEncode(addScreenArguments);
-
-                      print(addScreenArgumentsJson);
-
-                      Navigator.pop(context, addScreenArgumentsJson);
+                      Navigator.pop(context, addScreenArguments);
                     },
                     child: const Text('Выбрать дату и создать'))),
           ],

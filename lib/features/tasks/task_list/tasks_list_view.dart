@@ -30,14 +30,9 @@ class TasksListView extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.add),
                 onPressed: () async {
-                  var addScreenArgumentsJsonString = (await Navigator.pushNamed(
-                      context, AddTaskView.routeName)) as String;
-
-                  var addScreenArgumentsMap =
-                      jsonDecode(addScreenArgumentsJsonString);
-
                   var addScreenArguments =
-                      AddScreenArguments.fromJson(addScreenArgumentsMap);
+                      await Navigator.pushNamed(context, AddTaskView.routeName)
+                          as AddScreenArguments;
 
                   //setState(() {
                   // items.add(TaskItem(
