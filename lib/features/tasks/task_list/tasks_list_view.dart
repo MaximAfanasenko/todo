@@ -29,20 +29,22 @@ class TasksListView extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.add),
-                onPressed: () async {
-                  var addScreenArguments =
-                      await Navigator.pushNamed(context, AddTaskView.routeName)
-                          as AddScreenArguments;
+                onPressed: () {
+                  Navigator.pushNamed(context, AddTaskView.routeName);
+                  // var addScreenArguments =
+                  //     await Navigator.pushNamed(context, AddTaskView.routeName)
+                  //         as AddScreenArguments;
 
-                  //setState(() {
-                  // items.add(TaskItem(
-                  //     addScreenArguments.title,
-                  //     addScreenArguments.text,
-                  //     addScreenArguments.selectedDeadline));
-                  //});
+                  // setState(() {
+                  //  items.add(TaskItem(
+                  //      addScreenArguments.title,
+                  
+                  //      addScreenArguments.text,
+                  //      addScreenArguments.selectedDeadline));
+                  //  });
 
-                  var str = addScreenArguments.toString();
-                  print('Data from Second Screen: $str');
+                  // var str = addScreenArguments.toString();
+                  // print('Data from Second Screen: $str');
                 },
               ),
             ],

@@ -1,24 +1,29 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//@singleton
+@singleton
 class Cache {
-  static late SharedPreferences _preferences;
+  late SharedPreferences _preferences;
 
-  static Future<void> initialize() async {
+  Cache () {
+  }
+
+  Future<void> initialize() async {
     _preferences = await SharedPreferences.getInstance();
   }
 
-  static Future<bool> containsKey(String key) async {
+  Future<bool> containsKey(String key) async {
     return _preferences.containsKey(key);
   }
 
-  static Future<T?> getValue<T>(String key) async {
+  Future<T?> getValue<T>(String key) async {
     return _preferences.get(key) as T?;
   }
 
-  static Future<void> setValue<T>(String key, T value) async {
+  Future<void> setValue<T>(String key, T value) async {  
+
     if (value is String) {
       await _preferences.setString(key, value);
     } else if (value is int) {
@@ -29,16 +34,18 @@ class Cache {
       await _preferences.setBool(key, value);
     } else if (value is List<String>) {
       await _preferences.setStringList(key, value);
-    } else {
-      throw Exception('Unsupported value type');
+    } else {    
+      var jsonValue = jsonEncode(value);
+      _preferences.setString(key, jsonValue);
+      //throw Exception('Unsupported value type');
     }
   }
 
-  static Future<void> removeKey(String key) async {
+  Future<void> removeKey(String key) async {
     await _preferences.remove(key);
   }
 
-  static Future<void> clearCache() async {
+  Future<void> clearCache() async {
     await _preferences.clear();
   }
 }

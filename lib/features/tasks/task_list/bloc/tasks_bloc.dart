@@ -5,27 +5,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:flutter_demo/data/my_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:todo/features/tasks/models/todo.dart';
-import 'package:todo/features/tasks/todo_service.dart';
+import 'package:todo/features/tasks/tasks_service.dart';
 
 part 'tasks_state.dart';
 part 'tasks_event.dart';
 part 'tasks_bloc.freezed.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
-  TasksBloc(this.service) : super(TasksState.loading()) {
+  TasksBloc(this.service) : super(TasksState.data(List.empty())) {
     sub = service.controller.stream
         .listen((todos) => add(TasksEvent.setData(todos)));
 
-    on<_LoadEvent>((_, emit) {
-      service.readData();      
-      emit(TasksState.loading());
+    on<_LoadEvent>((_, emit) async {
+      //var a = await service.readData();      
+      //emit(TasksState.data(a));
     });
 
     on<_SetData>((event, emit) => emit(TasksState.data(event.todos)));
+
+    //service.readData();
   }
 
   late StreamSubscription<void> sub;
-  final TodoService service;
+  final TasksService service;
 
   @override
   Future<void> close() {

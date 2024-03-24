@@ -13,5 +13,8 @@ void main() async {
 
   runApp(const MyApp());  
 
-  await Cache.initialize();
+  var cache = getIt.get<Cache>();
+  cache.initialize();
+
+  //await Cache.initialize();
 }

@@ -21,6 +21,7 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Todo {
   String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +34,7 @@ abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res, Todo>;
   @useResult
-  $Res call({String name, DateTime createdAt});
+  $Res call({String name, String description, DateTime createdAt});
 }
 
 /// @nodoc
@@ -50,12 +51,17 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   @override
   $Res call({
     Object? name = null,
+    Object? description = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -72,7 +78,7 @@ abstract class _$$TodoImplCopyWith<$Res> implements $TodoCopyWith<$Res> {
       __$$TodoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, DateTime createdAt});
+  $Res call({String name, String description, DateTime createdAt});
 }
 
 /// @nodoc
@@ -86,12 +92,17 @@ class __$$TodoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? description = null,
     Object? createdAt = null,
   }) {
     return _then(_$TodoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -104,7 +115,8 @@ class __$$TodoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TodoImpl implements _Todo {
-  _$TodoImpl({required this.name, required this.createdAt});
+  _$TodoImpl(
+      {required this.name, required this.description, required this.createdAt});
 
   factory _$TodoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TodoImplFromJson(json);
@@ -112,11 +124,13 @@ class _$TodoImpl implements _Todo {
   @override
   final String name;
   @override
+  final String description;
+  @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Todo(name: $name, createdAt: $createdAt)';
+    return 'Todo(name: $name, description: $description, createdAt: $createdAt)';
   }
 
   @override
@@ -125,13 +139,15 @@ class _$TodoImpl implements _Todo {
         (other.runtimeType == runtimeType &&
             other is _$TodoImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, createdAt);
+  int get hashCode => Object.hash(runtimeType, name, description, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -150,12 +166,15 @@ class _$TodoImpl implements _Todo {
 abstract class _Todo implements Todo {
   factory _Todo(
       {required final String name,
+      required final String description,
       required final DateTime createdAt}) = _$TodoImpl;
 
   factory _Todo.fromJson(Map<String, dynamic> json) = _$TodoImpl.fromJson;
 
   @override
   String get name;
+  @override
+  String get description;
   @override
   DateTime get createdAt;
   @override

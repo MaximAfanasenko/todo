@@ -7,6 +7,7 @@ part 'todo.g.dart';
 class Todo with _$Todo {
   factory Todo({
     required String name,
+    required String description,
     required DateTime createdAt,
   }) = _Todo;
 
