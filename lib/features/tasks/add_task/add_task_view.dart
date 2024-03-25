@@ -15,17 +15,16 @@ class AddTaskView extends StatelessWidget {
   AddTaskView({super.key});
 
   static const routeName = '/edittask';
-  
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as Todo?; 
+    var args = ModalRoute.of(context)?.settings.arguments as Todo?;
 
     return BlocProvider<AddTaskBloc>(
         create: (_) => AddTaskBloc(inject(), args),
         child: Scaffold(
             appBar: AppBar(
-              title: const Text('Edit Task'),
+              title: Text("Создать/Изменить"),
             ),
             body: BlocBuilder<AddTaskBloc, AddTaskState>(
                 builder: (context, state) {
@@ -39,14 +38,16 @@ class AddTaskView extends StatelessWidget {
                         children: [
                           TextField(
                               decoration:
-                                  const InputDecoration(hintText: "Заголовок"),
+                                  InputDecoration(hintText: context.read<AddTaskBloc>().todoTitleText),
                               maxLines: 1,
-                              controller: context.read<AddTaskBloc>().titleController),
+                              controller:
+                                  context.read<AddTaskBloc>().titleController),
                           TextField(
                               decoration:
-                                  const InputDecoration(hintText: "Описание"),
+                                  InputDecoration(hintText: context.read<AddTaskBloc>().todoDescriptionText),
                               maxLines: 5,
-                              controller: context.read<AddTaskBloc>().textController),
+                              controller:
+                                  context.read<AddTaskBloc>().textController),
                           Padding(
                               padding: const EdgeInsets.only(top: 20),
                               child: ElevatedButton(
@@ -63,17 +64,17 @@ class AddTaskView extends StatelessWidget {
                                       return;
                                     }
 
-                                    var todo = Todo(
-                                        name: context.read<AddTaskBloc>().titleController.text,
-                                        description: context.read<AddTaskBloc>().textController.text,
-                                        createdAt: datePickingResult);
+                                    if (!context.mounted) return;
 
-                                    if (!context.mounted) return; 
-                                    
-                                    context.read<AddTaskBloc>().add(AddTaskEvent.addingTask(todo));                                    
+                                    context.read<AddTaskBloc>().add(
+                                        AddTaskEvent.addingTask(
+                                            datePickingResult));
+
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Выбрать дату и создать'))),
+                                  child: Text(context
+                                      .read<AddTaskBloc>()
+                                      .createButtonText))),
                         ],
                       ),
                     );

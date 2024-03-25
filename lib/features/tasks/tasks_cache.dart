@@ -14,8 +14,17 @@ class TasksCache {
 
   Future saveTodo(Todo todo) async {
     var todos = await readTodos();
-
     todos.add(todo);
+    await cache.setValue(TasksCacheKey, todos);
+  }
+
+  Future updateTodo(Todo todo) async {
+    var todos = await readTodos();
+
+    var index = todos.indexWhere((element) => element.id == todo.id);
+    todos.removeAt(index);
+    todos.insert(index, todo);
+
     await cache.setValue(TasksCacheKey, todos);
   }
 

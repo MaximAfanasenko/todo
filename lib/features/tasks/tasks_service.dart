@@ -21,8 +21,14 @@ class TasksService {
     readData();
   }
 
+  Future updateData(Todo todo) async {
+    await tasksCache.updateTodo(todo);
+    readData();
+  }
+
   Future deleteTodo(Todo todo) async {
     await tasksCache.deleteTodo(todo);
+    readData();
   }
 
   void dispose() {

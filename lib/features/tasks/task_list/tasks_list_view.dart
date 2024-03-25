@@ -25,7 +25,7 @@ class TasksListView extends StatelessWidget {
         create: (_) => TasksBloc(inject()),
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('TODO'),
+            title: Text("TODO"),
             actions: [
               IconButton(
                 icon: const Icon(Icons.add),
@@ -41,21 +41,24 @@ class TasksListView extends StatelessWidget {
                 loading: () => const Center(child: CircularProgressIndicator()),
                 data: (todos) {
                   if (todos.isEmpty) {
-                    return const Center(child: Text('No Data'));
+                    return Center(
+                        child: Text(context.read<TasksBloc>().noDataText));
                   }
 
                   return ListView(
                     children: todos
                         .map((todo) => Dismissible(
-                              key: UniqueKey(),
+                              key: Key(todo.id),
                               onDismissed: (direction) {
-
                                 context
                                     .read<TasksBloc>()
                                     .add(TasksEvent.deleteTodo(todo));
 
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('$todo dismissed')));
+                                    SnackBar(
+                                        content: Text(context
+                                            .read<TasksBloc>()
+                                            .deletedText(todo))));
                               },
                               background: Container(
                                 color: Colors.red,
@@ -74,9 +77,12 @@ class TasksListView extends StatelessWidget {
                               child: ListTile(
                                 title: Text(todo.name),
                                 onTap: () {
-                                  Navigator.pushNamed(context, AddTaskView.routeName, arguments: todo);
+                                  Navigator.pushNamed(
+                                      context, AddTaskView.routeName,
+                                      arguments: todo);
                                 },
-                                subtitle: Text(todo.createdAt.toIso8601String()),
+                                subtitle:
+                                    Text(todo.createdAt.toIso8601String()),
                               ),
                             ))
                         .toList(),
