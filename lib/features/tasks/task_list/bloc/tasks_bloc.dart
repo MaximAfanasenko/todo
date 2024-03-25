@@ -30,8 +30,8 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   late StreamSubscription<void> sub;
   final TasksService service;
 
-  String get screenTitleText => "Создать";
-  String get noDataText => "Заголовок";
+  String get screenTitleText => "TODO";
+  String get noDataText => "Нет данных";
   String deletedText(Todo todo) => "$todo - удален";
 
   @override
