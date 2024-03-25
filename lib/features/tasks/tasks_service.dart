@@ -21,6 +21,10 @@ class TasksService {
     readData();
   }
 
+  Future deleteTodo(Todo todo) async {
+    await tasksCache.deleteTodo(todo);
+  }
+
   void dispose() {
     controller.close();
   }

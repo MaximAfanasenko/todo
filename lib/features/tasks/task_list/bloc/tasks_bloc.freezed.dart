@@ -321,18 +321,21 @@ mixin _$TasksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
     required TResult Function(List<Todo> todos) setData,
+    required TResult Function(Todo todo) deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
     TResult? Function(List<Todo> todos)? setData,
+    TResult? Function(Todo todo)? deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
     TResult Function(List<Todo> todos)? setData,
+    TResult Function(Todo todo)? deleteTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -340,18 +343,21 @@ mixin _$TasksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) loadData,
     required TResult Function(_SetData value) setData,
+    required TResult Function(_DeleteTodo value) deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
+    TResult? Function(_DeleteTodo value)? deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? loadData,
     TResult Function(_SetData value)? setData,
+    TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -415,6 +421,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
     required TResult Function(List<Todo> todos) setData,
+    required TResult Function(Todo todo) deleteTodo,
   }) {
     return loadData();
   }
@@ -424,6 +431,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
     TResult? Function(List<Todo> todos)? setData,
+    TResult? Function(Todo todo)? deleteTodo,
   }) {
     return loadData?.call();
   }
@@ -433,6 +441,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
     TResult Function(List<Todo> todos)? setData,
+    TResult Function(Todo todo)? deleteTodo,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -446,6 +455,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) loadData,
     required TResult Function(_SetData value) setData,
+    required TResult Function(_DeleteTodo value) deleteTodo,
   }) {
     return loadData(this);
   }
@@ -455,6 +465,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
+    TResult? Function(_DeleteTodo value)? deleteTodo,
   }) {
     return loadData?.call(this);
   }
@@ -464,6 +475,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? loadData,
     TResult Function(_SetData value)? setData,
+    TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -549,6 +561,7 @@ class _$SetDataImpl implements _SetData {
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
     required TResult Function(List<Todo> todos) setData,
+    required TResult Function(Todo todo) deleteTodo,
   }) {
     return setData(todos);
   }
@@ -558,6 +571,7 @@ class _$SetDataImpl implements _SetData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
     TResult? Function(List<Todo> todos)? setData,
+    TResult? Function(Todo todo)? deleteTodo,
   }) {
     return setData?.call(todos);
   }
@@ -567,6 +581,7 @@ class _$SetDataImpl implements _SetData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
     TResult Function(List<Todo> todos)? setData,
+    TResult Function(Todo todo)? deleteTodo,
     required TResult orElse(),
   }) {
     if (setData != null) {
@@ -580,6 +595,7 @@ class _$SetDataImpl implements _SetData {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) loadData,
     required TResult Function(_SetData value) setData,
+    required TResult Function(_DeleteTodo value) deleteTodo,
   }) {
     return setData(this);
   }
@@ -589,6 +605,7 @@ class _$SetDataImpl implements _SetData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
+    TResult? Function(_DeleteTodo value)? deleteTodo,
   }) {
     return setData?.call(this);
   }
@@ -598,6 +615,7 @@ class _$SetDataImpl implements _SetData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? loadData,
     TResult Function(_SetData value)? setData,
+    TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
   }) {
     if (setData != null) {
@@ -613,5 +631,154 @@ abstract class _SetData implements TasksEvent {
   List<Todo> get todos;
   @JsonKey(ignore: true)
   _$$SetDataImplCopyWith<_$SetDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteTodoImplCopyWith<$Res> {
+  factory _$$DeleteTodoImplCopyWith(
+          _$DeleteTodoImpl value, $Res Function(_$DeleteTodoImpl) then) =
+      __$$DeleteTodoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Todo todo});
+
+  $TodoCopyWith<$Res> get todo;
+}
+
+/// @nodoc
+class __$$DeleteTodoImplCopyWithImpl<$Res>
+    extends _$TasksEventCopyWithImpl<$Res, _$DeleteTodoImpl>
+    implements _$$DeleteTodoImplCopyWith<$Res> {
+  __$$DeleteTodoImplCopyWithImpl(
+      _$DeleteTodoImpl _value, $Res Function(_$DeleteTodoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? todo = null,
+  }) {
+    return _then(_$DeleteTodoImpl(
+      null == todo
+          ? _value.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as Todo,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TodoCopyWith<$Res> get todo {
+    return $TodoCopyWith<$Res>(_value.todo, (value) {
+      return _then(_value.copyWith(todo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteTodoImpl implements _DeleteTodo {
+  _$DeleteTodoImpl(this.todo);
+
+  @override
+  final Todo todo;
+
+  @override
+  String toString() {
+    return 'TasksEvent.deleteTodo(todo: $todo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteTodoImpl &&
+            (identical(other.todo, todo) || other.todo == todo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, todo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteTodoImplCopyWith<_$DeleteTodoImpl> get copyWith =>
+      __$$DeleteTodoImplCopyWithImpl<_$DeleteTodoImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(List<Todo> todos) setData,
+    required TResult Function(Todo todo) deleteTodo,
+  }) {
+    return deleteTodo(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(List<Todo> todos)? setData,
+    TResult? Function(Todo todo)? deleteTodo,
+  }) {
+    return deleteTodo?.call(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(List<Todo> todos)? setData,
+    TResult Function(Todo todo)? deleteTodo,
+    required TResult orElse(),
+  }) {
+    if (deleteTodo != null) {
+      return deleteTodo(todo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadEvent value) loadData,
+    required TResult Function(_SetData value) setData,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+  }) {
+    return deleteTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadEvent value)? loadData,
+    TResult? Function(_SetData value)? setData,
+    TResult? Function(_DeleteTodo value)? deleteTodo,
+  }) {
+    return deleteTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadEvent value)? loadData,
+    TResult Function(_SetData value)? setData,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    required TResult orElse(),
+  }) {
+    if (deleteTodo != null) {
+      return deleteTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteTodo implements TasksEvent {
+  factory _DeleteTodo(final Todo todo) = _$DeleteTodoImpl;
+
+  Todo get todo;
+  @JsonKey(ignore: true)
+  _$$DeleteTodoImplCopyWith<_$DeleteTodoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

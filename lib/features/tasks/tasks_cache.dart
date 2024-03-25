@@ -15,15 +15,18 @@ class TasksCache {
   Future saveTodo(Todo todo) async {
     var todos = await readTodos();
 
-    //todos.
-
     todos.add(todo);
     await cache.setValue(TasksCacheKey, todos);
   }
 
+  Future deleteTodo(Todo todo) async {
+    var todos = await readTodos();
+    todos.remove(todo);
+    await cache.setValue(TasksCacheKey, todos);
+  }
+
   Future<List<Todo>> readTodos() async {
-    var todosJson =
-        await cache.getValue(TasksCacheKey); //  ?? List.empty(growable: true);
+    var todosJson = await cache.getValue(TasksCacheKey);
 
     if (todosJson != null) {
       List<dynamic> todosList = jsonDecode(todosJson);
@@ -32,14 +35,7 @@ class TasksCache {
       }).toList();
       return todos;
     } else {
-      return []; // Возвращаем пустой список, если данные отсутствуют
+      return [];
     }
-
-    // await Future.delayed(const Duration(seconds: 1));
-
-    // return [
-    //   Todo(createdAt: DateTime.now(), name: 'Created now'),
-    //   Todo(createdAt: DateTime(2023, 10, 25), name: 'Created 25.10.2023'),
-    // ];
   }
 }

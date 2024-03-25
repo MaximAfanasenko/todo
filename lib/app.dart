@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
               builder: (BuildContext context) {
                 switch (routeSettings.name) {
                   case AddTaskView.routeName:
-                    return AddTaskView(titleController: TextEditingController(), textController: TextEditingController());
+                    return AddTaskView();
                   case TasksListView.routeName:
                   default:
                     return TasksListView();

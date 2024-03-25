@@ -16,14 +16,15 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     sub = service.controller.stream
         .listen((todos) => add(TasksEvent.setData(todos)));
 
-    on<_LoadEvent>((_, emit) async {
-      //var a = await service.readData();      
-      //emit(TasksState.data(a));
-    });
+    on<_LoadEvent>((_, emit) async {});
 
     on<_SetData>((event, emit) => emit(TasksState.data(event.todos)));
 
-    //service.readData();
+    on<_DeleteTodo>((event, emit) async {
+      await service.deleteTodo(event.todo);
+    });
+
+    service.readData();
   }
 
   late StreamSubscription<void> sub;

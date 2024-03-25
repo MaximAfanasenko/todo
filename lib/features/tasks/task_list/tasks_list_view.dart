@@ -31,20 +31,6 @@ class TasksListView extends StatelessWidget {
                 icon: const Icon(Icons.add),
                 onPressed: () {
                   Navigator.pushNamed(context, AddTaskView.routeName);
-                  // var addScreenArguments =
-                  //     await Navigator.pushNamed(context, AddTaskView.routeName)
-                  //         as AddScreenArguments;
-
-                  // setState(() {
-                  //  items.add(TaskItem(
-                  //      addScreenArguments.title,
-                  
-                  //      addScreenArguments.text,
-                  //      addScreenArguments.selectedDeadline));
-                  //  });
-
-                  // var str = addScreenArguments.toString();
-                  // print('Data from Second Screen: $str');
                 },
               ),
             ],
@@ -60,12 +46,39 @@ class TasksListView extends StatelessWidget {
 
                   return ListView(
                     children: todos
-                        .map(
-                          (e) => ListTile(
-                            title: Text(e.name),
-                            subtitle: Text(e.createdAt.toIso8601String()),
-                          ),
-                        )
+                        .map((todo) => Dismissible(
+                              key: UniqueKey(),
+                              onDismissed: (direction) {
+
+                                context
+                                    .read<TasksBloc>()
+                                    .add(TasksEvent.deleteTodo(todo));
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('$todo dismissed')));
+                              },
+                              background: Container(
+                                color: Colors.red,
+                                child: const Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20.0),
+                                    child: Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              child: ListTile(
+                                title: Text(todo.name),
+                                onTap: () {
+                                  Navigator.pushNamed(context, AddTaskView.routeName, arguments: todo);
+                                },
+                                subtitle: Text(todo.createdAt.toIso8601String()),
+                              ),
+                            ))
                         .toList(),
                   );
                 },

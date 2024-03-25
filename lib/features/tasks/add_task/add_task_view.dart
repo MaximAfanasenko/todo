@@ -12,20 +12,20 @@ import 'package:todo/features/tasks/models/todo.dart';
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class AddTaskView extends StatelessWidget {
-  const AddTaskView(
-      {super.key, required this.titleController, required this.textController});
+  AddTaskView({super.key});
 
-  static const routeName = '/settings';
-  final TextEditingController titleController;
-  final TextEditingController textController;
+  static const routeName = '/edittask';
+  
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)?.settings.arguments as Todo?; 
+
     return BlocProvider<AddTaskBloc>(
-        create: (_) => AddTaskBloc(inject()),
+        create: (_) => AddTaskBloc(inject(), args),
         child: Scaffold(
             appBar: AppBar(
-              title: const Text('Settings'),
+              title: const Text('Edit Task'),
             ),
             body: BlocBuilder<AddTaskBloc, AddTaskState>(
                 builder: (context, state) {
@@ -33,35 +33,24 @@ class AddTaskView extends StatelessWidget {
                   loading: () =>
                       const Center(child: CircularProgressIndicator()),
                   fillingFields: () {
-                    // if (todos.isEmpty) {
-                    //   return const Center(child: Text('No Data'));
-                    // }
-
                     return Padding(
                       padding: const EdgeInsets.all(16),
-                      // Glue the SettingsController to the theme selection DropdownButton.
-                      //
-                      // When a user selects a theme from the dropdown list, the
-                      // SettingsController is updated, which rebuilds the MaterialApp.r
                       child: Column(
                         children: [
                           TextField(
                               decoration:
                                   const InputDecoration(hintText: "Заголовок"),
                               maxLines: 1,
-                              controller: titleController),
+                              controller: context.read<AddTaskBloc>().titleController),
                           TextField(
                               decoration:
                                   const InputDecoration(hintText: "Описание"),
                               maxLines: 5,
-                              controller: textController),
+                              controller: context.read<AddTaskBloc>().textController),
                           Padding(
                               padding: const EdgeInsets.only(top: 20),
                               child: ElevatedButton(
-                                  onPressed: () async {   
-
-                                    var addTaskBloc = context.read<AddTaskBloc>();                           
-
+                                  onPressed: () async {
                                     var datePickingResult =
                                         await showDatePicker(
                                             context: context,
@@ -72,12 +61,16 @@ class AddTaskView extends StatelessWidget {
 
                                     if (datePickingResult == null) {
                                       return;
-                                    }            
+                                    }
 
-                                    var todo = Todo(name: titleController.text, description: textController.text, createdAt: datePickingResult!);
+                                    var todo = Todo(
+                                        name: context.read<AddTaskBloc>().titleController.text,
+                                        description: context.read<AddTaskBloc>().textController.text,
+                                        createdAt: datePickingResult);
 
-                                    addTaskBloc.add(AddTaskEvent.addingTask(todo));
-
+                                    if (!context.mounted) return; 
+                                    
+                                    context.read<AddTaskBloc>().add(AddTaskEvent.addingTask(todo));                                    
                                     Navigator.pop(context);
                                   },
                                   child: const Text('Выбрать дату и создать'))),
