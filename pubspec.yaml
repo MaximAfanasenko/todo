@@ -15,6 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  easy_localization:
   flutter_bloc: 
   freezed:
   get_it: 
@@ -45,3 +46,4 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/translations/

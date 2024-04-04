@@ -1,0 +1,12 @@
+{
+  "appName": "TODO",
+  "noData" : "No Data",
+  "deleted" : " - deleted",
+  "createOrChange" : "Create/Change",
+  "create" : "Create",
+  "change" : "Change",
+  "title" : "Title",
+  "description" : "Description",
+  "chooseDateAndCreate" : "Сhoose Date And Create",
+  "chooseDateAndChange" : "Сhoose Date And Change"
+}

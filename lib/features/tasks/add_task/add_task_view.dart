@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/tasks/add_task/add_screen_arguments.dart';
 import 'package:todo/features/tasks/add_task/bloc/add_task_bloc.dart';
 import 'package:todo/features/tasks/models/todo.dart';
+import 'package:todo/generated/locale_keys.g.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -24,7 +26,7 @@ class AddTaskView extends StatelessWidget {
         create: (_) => AddTaskBloc(inject(), args),
         child: Scaffold(
             appBar: AppBar(
-              title: Text("Создать/Изменить"),
+              title: Text(LocaleKeys.createOrChange.tr()),
             ),
             body: BlocBuilder<AddTaskBloc, AddTaskState>(
                 builder: (context, state) {

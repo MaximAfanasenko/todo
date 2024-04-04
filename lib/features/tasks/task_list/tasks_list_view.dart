@@ -5,9 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/tasks/add_task/add_screen_arguments.dart';
 import 'package:todo/features/tasks/task_list/bloc/tasks_bloc.dart';
+import 'package:todo/generated/locale_keys.g.dart';
 
 import '../add_task/add_task_view.dart';
 import 'task_item.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 
 class TasksListView extends StatelessWidget {
   TasksListView({super.key});
@@ -25,7 +28,7 @@ class TasksListView extends StatelessWidget {
         create: (_) => TasksBloc(inject()),
         child: Scaffold(
           appBar: AppBar(
-            title: Text("TODO"),
+            title: Text(LocaleKeys.appName.tr()),
             actions: [
               IconButton(
                 icon: const Icon(Icons.add),

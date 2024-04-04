@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/features/tasks/tasks_service.dart';
+import 'package:todo/generated/locale_keys.g.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_task_state.dart';
@@ -59,10 +61,10 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   late Todo? todo;
   final TasksService tasksService;
 
-  String get screenTitleText => todo != null ? "Изменить" : "Создать";
-  String get todoTitleText => "Заголовок";
-  String get todoDescriptionText => "Описание";
-  String get createButtonText => todo != null ? "Выбрать дату и обновить" : "Выбрать дату и создать";
+  String get screenTitleText => todo != null ? LocaleKeys.change.tr() : LocaleKeys.create.tr();
+  String get todoTitleText => LocaleKeys.title.tr();
+  String get todoDescriptionText => LocaleKeys.description.tr();
+  String get createButtonText => todo != null ? LocaleKeys.chooseDateAndChange.tr() : LocaleKeys.chooseDateAndCreate.tr();
 
   @override
   Future<void> close() {

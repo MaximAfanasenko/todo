@@ -1,0 +1,12 @@
+{
+  "appName": "Список дел",
+  "noData" : "Нет данных",
+  "deleted" : " - удален",
+  "createOrChange" : "Создать/Изменить",
+  "create" : "Создать",
+  "change" : "Изменить",
+  "title" : "Заголовок",
+  "description" : "Описание",
+  "chooseDateAndCreate" : "Выбрать дату и создать",
+  "chooseDateAndChange" : "Выбрать дату и обновить"
+}
