@@ -32,25 +32,23 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
 
     on<_AddingTaskEvent>((event, emit) {
       if (todo != null) {
-
         var todo = Todo(
-            id: this.todo!.id,
-            name: titleController.text,
-            description: textController.text,
-            createdAt: event.dateTime,);
+          id: this.todo!.id,
+          name: titleController.text,
+          description: textController.text,
+          createdAt: event.dateTime,
+        );
 
         tasksService.updateData(todo);
-
       } else {
-
         var todo = Todo(
-            id: const Uuid().v4(),
-            name: titleController.text,
-            description: textController.text,
-            createdAt: event.dateTime,);
+          id: const Uuid().v4(),
+          name: titleController.text,
+          description: textController.text,
+          createdAt: event.dateTime,
+        );
 
         tasksService.addData(todo);
-
       }
     });
   }
@@ -60,11 +58,6 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   late StreamSubscription<void> sub;
   late Todo? todo;
   final TasksService tasksService;
-
-  String get screenTitleText => todo != null ? LocaleKeys.change.tr() : LocaleKeys.create.tr();
-  String get todoTitleText => LocaleKeys.title.tr();
-  String get todoDescriptionText => LocaleKeys.description.tr();
-  String get createButtonText => todo != null ? LocaleKeys.chooseDateAndChange.tr() : LocaleKeys.chooseDateAndCreate.tr();
 
   @override
   Future<void> close() {

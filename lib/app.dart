@@ -1,14 +1,45 @@
-// ignore_for_file: require_trailing_commas
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:todo/features/profile/profile_view.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 import 'features/tasks/task_list/tasks_list_view.dart';
 import 'features/tasks/add_task/add_task_view.dart';
+
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return NavigationExample();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'tasks',
+          builder: (BuildContext context, GoRouterState state) {
+            return AddTaskView();
+          },
+          routes: [
+            GoRoute(
+              path: 'addTask',
+              builder: (BuildContext context, GoRouterState state) {
+                return AddTaskView();
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'profile',
+          builder: (BuildContext context, GoRouterState state) {
+            return ProfileView();
+          },
+        ),
+      ],
+    ),
+  ],
+);
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -16,31 +47,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      restorationScopeId: 'app',      
+    return MaterialApp.router(
+      restorationScopeId: 'app',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(),
       darkTheme: ThemeData.dark(),
-      home: const NavigationExample(),
-
-      // Define a function to handle named routes in order to support
-      // Flutter web url navigation and deep linking.
-      // onGenerateRoute: (RouteSettings routeSettings) {
-      //   return MaterialPageRoute<void>(
-      //     settings: routeSettings,
-      //     builder: (BuildContext context) {
-      //       switch (routeSettings.name) {
-      //         case AddTaskView.routeName:
-      //           return AddTaskView();
-      //         case TasksListView.routeName:
-      //         default:
-      //           return TasksListView();
-      //       }
-      //     },
-      //   );
-      // },
+      routerConfig: _router,
     );
   }
 }
@@ -60,16 +74,16 @@ class _NavigationExampleState extends State<NavigationExample> {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-            title: Text(LocaleKeys.appName.tr()),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.add),
-                onPressed: () {
-                  Navigator.pushNamed(context, AddTaskView.routeName);
-                },
-              ),
-            ],
+        title: Text(LocaleKeys.appName.tr()),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.pushNamed(context, AddTaskView.routeName);
+            },
           ),
+        ],
+      ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
@@ -85,10 +99,6 @@ class _NavigationExampleState extends State<NavigationExample> {
             label: 'List',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
-            label: 'Add',
-          ),
-          NavigationDestination(
             icon: Badge(
               label: Text('2'),
               child: Icon(Icons.messenger_sharp),
@@ -98,10 +108,8 @@ class _NavigationExampleState extends State<NavigationExample> {
         ],
       ),
       body: <Widget>[
-        /// Home page
         TasksListView(),
-        AddTaskView(),
-        ProfileView()
+        ProfileView(),
       ][currentPageIndex],
     );
   }

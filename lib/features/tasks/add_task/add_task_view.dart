@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
-import 'package:todo/features/tasks/add_task/add_screen_arguments.dart';
 import 'package:todo/features/tasks/add_task/bloc/add_task_bloc.dart';
 import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/generated/locale_keys.g.dart';
@@ -35,15 +34,14 @@ class AddTaskView extends StatelessWidget {
                   children: [
                     TextField(
                       decoration: InputDecoration(
-                        hintText: context.read<AddTaskBloc>().todoTitleText,
+                        hintText: LocaleKeys.title.tr(),
                       ),
                       maxLines: 1,
                       controller: context.read<AddTaskBloc>().titleController,
                     ),
                     TextField(
                       decoration: InputDecoration(
-                        hintText:
-                            context.read<AddTaskBloc>().todoDescriptionText,
+                        hintText: LocaleKeys.description.tr(),
                       ),
                       maxLines: 5,
                       controller: context.read<AddTaskBloc>().textController,
@@ -76,7 +74,7 @@ class AddTaskView extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         child: Text(
-                          context.read<AddTaskBloc>().createButtonText,
+                          LocaleKeys.chooseDateAndCreate.tr(),
                         ),
                       ),
                     ),
