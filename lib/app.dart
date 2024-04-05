@@ -1,70 +1,108 @@
+// ignore_for_file: require_trailing_commas
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:todo/features/profile/profile_view.dart';
+import 'package:todo/generated/locale_keys.g.dart';
 
 import 'features/tasks/task_list/tasks_list_view.dart';
 import 'features/tasks/add_task/add_task_view.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key
-  });
-
-
-  
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Glue the SettingsController to the MaterialApp.
-    //
-    // The ListenableBuilder Widget listens to the SettingsController for changes.
-    // Whenever the user updates their settings, the MaterialApp is rebuilt.
     return MaterialApp(
-          // Providing a restorationScopeId allows the Navigator built by the
-          // MaterialApp to restore the navigation stack when a user leaves and
-          // returns to the app after it has been killed while running in the
-          // background.
-          restorationScopeId: 'app',
+      restorationScopeId: 'app',      
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      theme: ThemeData(),
+      darkTheme: ThemeData.dark(),
+      home: const NavigationExample(),
 
-          // Provide the generated AppLocalizations to the MaterialApp. This
-          // allows descendant Widgets to display the correct translations
-          // depending on the user's locale.
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+      // Define a function to handle named routes in order to support
+      // Flutter web url navigation and deep linking.
+      // onGenerateRoute: (RouteSettings routeSettings) {
+      //   return MaterialPageRoute<void>(
+      //     settings: routeSettings,
+      //     builder: (BuildContext context) {
+      //       switch (routeSettings.name) {
+      //         case AddTaskView.routeName:
+      //           return AddTaskView();
+      //         case TasksListView.routeName:
+      //         default:
+      //           return TasksListView();
+      //       }
+      //     },
+      //   );
+      // },
+    );
+  }
+}
 
-          // Use AppLocalizations to configure the correct application title
-          // depending on the user's locale.
-          //
-          // The appTitle is defined in .arb files found in the localization
-          // directory.
-          // onGenerateTitle: (BuildContext context) =>
-          //     AppLocalizations.of(context)!.appTitle,
+class NavigationExample extends StatefulWidget {
+  const NavigationExample({super.key});
 
-          // Define a light and dark color theme. Then, read the user's
-          // preferred ThemeMode (light, dark, or system default) from the
-          // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+  @override
+  State<NavigationExample> createState() => _NavigationExampleState();
+}
 
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case AddTaskView.routeName:
-                    return AddTaskView();
-                  case TasksListView.routeName:
-                  default:
-                    return TasksListView();
-                }
-              },
-            );
-          },
-        );
+class _NavigationExampleState extends State<NavigationExample> {
+  int currentPageIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Scaffold(
+      appBar: AppBar(
+            title: Text(LocaleKeys.appName.tr()),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () {
+                  Navigator.pushNamed(context, AddTaskView.routeName);
+                },
+              ),
+            ],
+          ),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: Colors.amber,
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'List',
+          ),
+          NavigationDestination(
+            icon: Badge(child: Icon(Icons.notifications_sharp)),
+            label: 'Add',
+          ),
+          NavigationDestination(
+            icon: Badge(
+              label: Text('2'),
+              child: Icon(Icons.messenger_sharp),
+            ),
+            label: 'Profile',
+          ),
+        ],
+      ),
+      body: <Widget>[
+        /// Home page
+        TasksListView(),
+        AddTaskView(),
+        ProfileView()
+      ][currentPageIndex],
+    );
   }
 }

@@ -25,75 +25,61 @@ class TasksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(
-        create: (_) => TasksBloc(inject()),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(LocaleKeys.appName.tr()),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.add),
-                onPressed: () {
-                  Navigator.pushNamed(context, AddTaskView.routeName);
-                },
-              ),
-            ],
-          ),
-          body: BlocBuilder<TasksBloc, TasksState>(
-            builder: (context, state) {
-              return state.when(
-                loading: () => const Center(child: CircularProgressIndicator()),
-                data: (todos) {
-                  if (todos.isEmpty) {
-                    return Center(
-                        child: Text(context.read<TasksBloc>().noDataText));
-                  }
+      create: (_) => TasksBloc(inject()),
+      child: BlocBuilder<TasksBloc, TasksState>(
+        builder: (context, state) {
+          return state.when(
+            loading: () => const Center(child: CircularProgressIndicator()),
+            data: (todos) {
+              if (todos.isEmpty) {
+                return Center(
+                    child: Text(context.read<TasksBloc>().noDataText));
+              }
 
-                  return ListView(
-                    children: todos
-                        .map((todo) => Dismissible(
-                              key: Key(todo.id),
-                              onDismissed: (direction) {
-                                context
-                                    .read<TasksBloc>()
-                                    .add(TasksEvent.deleteTodo(todo));
+              return ListView(
+                children: todos
+                    .map(
+                      (todo) => Dismissible(
+                        key: Key(todo.id),
+                        onDismissed: (direction) {
+                          context
+                              .read<TasksBloc>()
+                              .add(TasksEvent.deleteTodo(todo));
 
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text(context
-                                            .read<TasksBloc>()
-                                            .deletedText(todo))));
-                              },
-                              background: Container(
-                                color: Colors.red,
-                                child: const Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.0),
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(context
+                                  .read<TasksBloc>()
+                                  .deletedText(todo))));
+                        },
+                        background: Container(
+                          color: Colors.red,
+                          child: const Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.white,
                               ),
-                              child: ListTile(
-                                title: Text(todo.name),
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, AddTaskView.routeName,
-                                      arguments: todo);
-                                },
-                                subtitle:
-                                    Text(todo.createdAt.toIso8601String()),
-                              ),
-                            ))
-                        .toList(),
-                  );
-                },
+                            ),
+                          ),
+                        ),
+                        child: ListTile(
+                          title: Text(todo.name),
+                          onTap: () {
+                            Navigator.pushNamed(context, AddTaskView.routeName,
+                                arguments: todo);
+                          },
+                          subtitle: Text(todo.createdAt.toIso8601String()),
+                        ),
+                      ),
+                    )
+                    .toList(),
               );
             },
-          ),
-        ));
+          );
+        },
+      ),
+    );
   }
 }

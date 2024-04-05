@@ -37,7 +37,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
             id: this.todo!.id,
             name: titleController.text,
             description: textController.text,
-            createdAt: event.dateTime);
+            createdAt: event.dateTime,);
 
         tasksService.updateData(todo);
 
@@ -47,7 +47,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
             id: const Uuid().v4(),
             name: titleController.text,
             description: textController.text,
-            createdAt: event.dateTime);
+            createdAt: event.dateTime,);
 
         tasksService.addData(todo);
 
