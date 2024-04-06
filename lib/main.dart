@@ -5,18 +5,19 @@ import 'package:todo/base/di/di.dart';
 import 'app.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await configureDi();
 
-  WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  runApp(EasyLocalization(
+  runApp(
+    EasyLocalization(
       supportedLocales: const [Locale('en', 'EN'), Locale('ru', 'RU')],
       path:
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: const Locale('ru', 'RU'),
-      child: const MyApp()));
-
-  var cache = getIt.get<Cache>();
-  cache.initialize();
+      child: const MyApp(),
+    ),
+  );
 }
