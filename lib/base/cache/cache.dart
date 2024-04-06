@@ -7,12 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Cache {
   late SharedPreferences _preferences;
 
-  Cache () {
-  }
+  Cache ();
 
-  Future<void> initialize() async {
-    _preferences = await SharedPreferences.getInstance();
-  }
+  @PostConstruct()
+  Future<void> initialize() async => _preferences = await SharedPreferences.getInstance();
 
   Future<bool> containsKey(String key) async {
     return _preferences.containsKey(key);
