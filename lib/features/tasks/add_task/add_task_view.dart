@@ -15,7 +15,7 @@ import 'package:todo/generated/locale_keys.g.dart';
 class AddTaskView extends StatelessWidget {
   AddTaskView({super.key});
 
-  static const routeName = '/edittask';
+  //static const routeName = '/edittask';
 
   @override
   Widget build(BuildContext context) {

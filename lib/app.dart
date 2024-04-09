@@ -8,18 +8,20 @@ import 'package:todo/generated/locale_keys.g.dart';
 import 'features/tasks/task_list/tasks_list_view.dart';
 import 'features/tasks/add_task/add_task_view.dart';
 
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter _router = GoRouter(
+  initialLocation: '/tasks',
   routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return NavigationExample();
+    ShellRoute(
+      builder: (context, state, child) {
+        return NavigationExample(childScreen: child);
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'tasks',
+          path: '/tasks',
           builder: (BuildContext context, GoRouterState state) {
-            return AddTaskView();
+            return TasksListView();
           },
           routes: [
             GoRoute(
@@ -31,7 +33,7 @@ final GoRouter _router = GoRouter(
           ],
         ),
         GoRoute(
-          path: 'profile',
+          path: '/profile',
           builder: (BuildContext context, GoRouterState state) {
             return ProfileView();
           },
@@ -60,7 +62,9 @@ class MyApp extends StatelessWidget {
 }
 
 class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
+  const NavigationExample({super.key, required this.childScreen});
+
+  final Widget childScreen;
 
   @override
   State<NavigationExample> createState() => _NavigationExampleState();
@@ -79,13 +83,21 @@ class _NavigationExampleState extends State<NavigationExample> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              Navigator.pushNamed(context, AddTaskView.routeName);
+              context.go('/tasks/addtask');
             },
           ),
         ],
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
+          if (index == 0) {
+            context.go('/tasks');
+          }
+
+          if (index == 1) {
+            context.go('/profile');
+          }
+
           setState(() {
             currentPageIndex = index;
           });
@@ -107,10 +119,7 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
         ],
       ),
-      body: <Widget>[
-        TasksListView(),
-        ProfileView(),
-      ][currentPageIndex],
+      body: widget.childScreen,
     );
   }
 }
