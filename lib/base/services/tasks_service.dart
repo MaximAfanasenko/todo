@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:todo/features/tasks/models/todo.dart';
-import 'package:todo/features/tasks/tasks_cache.dart';
+import 'package:todo/base/services/tasks_cache.dart';
 
 @singleton
 class TasksService {

@@ -11,8 +11,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:todo/base/cache/cache.dart' as _i3;
-import 'package:todo/features/tasks/tasks_cache.dart' as _i4;
-import 'package:todo/features/tasks/tasks_service.dart' as _i5;
+import 'package:todo/base/services/tasks_cache.dart' as _i4;
+import 'package:todo/base/services/tasks_service.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

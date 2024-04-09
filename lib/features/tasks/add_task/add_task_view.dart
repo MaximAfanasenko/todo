@@ -19,7 +19,16 @@ class AddTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as Todo?;
+    Todo? args;
+
+    try 
+    {
+       args = ModalRoute.of(context)?.settings.arguments as Todo?;
+    } 
+    catch (e) 
+    {
+
+    }
 
     return BlocProvider<AddTaskBloc>(
       create: (_) => AddTaskBloc(inject(), args),
