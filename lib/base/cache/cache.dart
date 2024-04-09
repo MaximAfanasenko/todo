@@ -4,13 +4,16 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @singleton
+
 class Cache {
   late SharedPreferences _preferences;
 
   Cache ();
 
-  @PostConstruct()
-  Future<void> initialize() async => _preferences = await SharedPreferences.getInstance();
+  @postConstruct
+  void init() async {
+     _preferences = await SharedPreferences.getInstance();
+  }
 
   Future<bool> containsKey(String key) async {
     return _preferences.containsKey(key);
