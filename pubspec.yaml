@@ -23,6 +23,7 @@ dependencies:
   injectable: 
   shared_preferences:
   uuid:
+  freezed_annotation: ^2.4.1
 
 dev_dependencies:
   flutter_test:
