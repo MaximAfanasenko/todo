@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/tasks/add_task/bloc/add_task_bloc.dart';
 import 'package:todo/features/tasks/models/todo.dart';
+import 'package:todo/features/tasks/task_list/bloc/tasks_bloc.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 /// Displays the various settings that can be customized by the user.
@@ -21,20 +22,29 @@ class AddTaskView extends StatelessWidget {
   Widget build(BuildContext context) {
     Todo? args;
 
-    try 
-    {
-       args = ModalRoute.of(context)?.settings.arguments as Todo?;
-    } 
-    catch (e) 
-    {
-
-    }
+    try {
+      args = ModalRoute.of(context)?.settings.arguments as Todo?;
+    } catch (e) {}
 
     return BlocProvider<AddTaskBloc>(
       create: (_) => AddTaskBloc(inject(), args),
-      child: BlocBuilder<AddTaskBloc, AddTaskState>(
+      child: BlocConsumer<AddTaskBloc, AddTaskState>(
+        listenWhen: (previous, current) => current == AddTaskState.completed(),
+        buildWhen: (previous, current) =>
+            current == AddTaskState.fillingFields() ||
+            current == AddTaskState.loading(),
+        listener: (context, state) {
+          state.when(
+            loading: () => {},
+            fillingFields: () => {},
+            completed: () => {
+              Navigator.pop(context),
+            },
+          );
+        },
         builder: (context, state) {
           return state.when(
+            completed: () => const SizedBox(),
             loading: () => const Center(child: CircularProgressIndicator()),
             fillingFields: () {
               return Padding(
@@ -75,16 +85,29 @@ class AddTaskView extends StatelessWidget {
                           if (!context.mounted) return;
 
                           context.read<AddTaskBloc>().add(
-                                AddTaskEvent.addingTask(
+                                AddTaskEvent.setDateTime(
                                   datePickingResult,
                                 ),
                               );
-
-                          Navigator.pop(context);
                         },
-                        child: Text(
-                          LocaleKeys.chooseDateAndCreate.tr(),
-                        ),
+                        child: Text("Выбрать дату"
+                            //LocaleKeys.chooseDateAndCreate.tr(),
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (!context.mounted) return;
+
+                          context.read<AddTaskBloc>().add(
+                                AddTaskEvent.saveTodo(),
+                              );
+                        },
+                        child: Text("Создать задачу"
+                            //LocaleKeys.chooseDateAndCreate.tr(),
+                            ),
                       ),
                     ),
                   ],

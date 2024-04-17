@@ -27,7 +27,8 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i3.Cache>(_i3.Cache()..init());
     gh.singleton<_i4.TasksCache>(_i4.TasksCache(cache: gh<_i3.Cache>()));
-    gh.singleton<_i5.TasksService>(_i5.TasksService(tasksCache: gh<_i4.TasksCache>()));
+    gh.singleton<_i5.TasksService>(
+        _i5.TasksService(tasksCache: gh<_i4.TasksCache>()));
     return this;
   }
 }

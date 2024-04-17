@@ -20,18 +20,21 @@ mixin _$AddTaskState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
+    required TResult Function() completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
+    TResult? Function()? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
+    TResult Function()? completed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AddTaskState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FillingFieldsState value) fillingFields,
+    required TResult Function(_CompletedState value) completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FillingFieldsState value)? fillingFields,
+    TResult? Function(_CompletedState value)? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FillingFieldsState value)? fillingFields,
+    TResult Function(_CompletedState value)? completed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
+    required TResult Function() completed,
   }) {
     return loading();
   }
@@ -123,6 +130,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
+    TResult? Function()? completed,
   }) {
     return loading?.call();
   }
@@ -132,6 +140,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
+    TResult Function()? completed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -145,6 +154,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FillingFieldsState value) fillingFields,
+    required TResult Function(_CompletedState value) completed,
   }) {
     return loading(this);
   }
@@ -154,6 +164,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FillingFieldsState value)? fillingFields,
+    TResult? Function(_CompletedState value)? completed,
   }) {
     return loading?.call(this);
   }
@@ -163,6 +174,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FillingFieldsState value)? fillingFields,
+    TResult Function(_CompletedState value)? completed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -216,6 +228,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
+    required TResult Function() completed,
   }) {
     return fillingFields();
   }
@@ -225,6 +238,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
+    TResult? Function()? completed,
   }) {
     return fillingFields?.call();
   }
@@ -234,6 +248,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
+    TResult Function()? completed,
     required TResult orElse(),
   }) {
     if (fillingFields != null) {
@@ -247,6 +262,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FillingFieldsState value) fillingFields,
+    required TResult Function(_CompletedState value) completed,
   }) {
     return fillingFields(this);
   }
@@ -256,6 +272,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FillingFieldsState value)? fillingFields,
+    TResult? Function(_CompletedState value)? completed,
   }) {
     return fillingFields?.call(this);
   }
@@ -265,6 +282,7 @@ class _$FillingFieldsStateImpl implements _FillingFieldsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FillingFieldsState value)? fillingFields,
+    TResult Function(_CompletedState value)? completed,
     required TResult orElse(),
   }) {
     if (fillingFields != null) {
@@ -279,26 +297,137 @@ abstract class _FillingFieldsState implements AddTaskState {
 }
 
 /// @nodoc
+abstract class _$$CompletedStateImplCopyWith<$Res> {
+  factory _$$CompletedStateImplCopyWith(_$CompletedStateImpl value,
+          $Res Function(_$CompletedStateImpl) then) =
+      __$$CompletedStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CompletedStateImplCopyWithImpl<$Res>
+    extends _$AddTaskStateCopyWithImpl<$Res, _$CompletedStateImpl>
+    implements _$$CompletedStateImplCopyWith<$Res> {
+  __$$CompletedStateImplCopyWithImpl(
+      _$CompletedStateImpl _value, $Res Function(_$CompletedStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CompletedStateImpl implements _CompletedState {
+  _$CompletedStateImpl();
+
+  @override
+  String toString() {
+    return 'AddTaskState.completed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CompletedStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() fillingFields,
+    required TResult Function() completed,
+  }) {
+    return completed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function()? fillingFields,
+    TResult? Function()? completed,
+  }) {
+    return completed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? fillingFields,
+    TResult Function()? completed,
+    required TResult orElse(),
+  }) {
+    if (completed != null) {
+      return completed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FillingFieldsState value) fillingFields,
+    required TResult Function(_CompletedState value) completed,
+  }) {
+    return completed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FillingFieldsState value)? fillingFields,
+    TResult? Function(_CompletedState value)? completed,
+  }) {
+    return completed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_FillingFieldsState value)? fillingFields,
+    TResult Function(_CompletedState value)? completed,
+    required TResult orElse(),
+  }) {
+    if (completed != null) {
+      return completed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CompletedState implements AddTaskState {
+  factory _CompletedState() = _$CompletedStateImpl;
+}
+
+/// @nodoc
 mixin _$AddTaskEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
-    required TResult Function(DateTime dateTime) addingTask,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function() saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
-    TResult? Function(DateTime dateTime)? addingTask,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function()? saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
-    TResult Function(DateTime dateTime)? addingTask,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function()? saveTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -306,21 +435,24 @@ mixin _$AddTaskEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingEvent value) loading,
     required TResult Function(_FillingFieldsEvent value) fillingFields,
-    required TResult Function(_AddingTaskEvent value) addingTask,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingEvent value)? loading,
     TResult? Function(_FillingFieldsEvent value)? fillingFields,
-    TResult? Function(_AddingTaskEvent value)? addingTask,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingEvent value)? loading,
     TResult Function(_FillingFieldsEvent value)? fillingFields,
-    TResult Function(_AddingTaskEvent value)? addingTask,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -384,7 +516,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
-    required TResult Function(DateTime dateTime) addingTask,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function() saveTodo,
   }) {
     return loading();
   }
@@ -394,7 +527,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
-    TResult? Function(DateTime dateTime)? addingTask,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function()? saveTodo,
   }) {
     return loading?.call();
   }
@@ -404,7 +538,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
-    TResult Function(DateTime dateTime)? addingTask,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function()? saveTodo,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -418,7 +553,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingEvent value) loading,
     required TResult Function(_FillingFieldsEvent value) fillingFields,
-    required TResult Function(_AddingTaskEvent value) addingTask,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
   }) {
     return loading(this);
   }
@@ -428,7 +564,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingEvent value)? loading,
     TResult? Function(_FillingFieldsEvent value)? fillingFields,
-    TResult? Function(_AddingTaskEvent value)? addingTask,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
   }) {
     return loading?.call(this);
   }
@@ -438,7 +575,8 @@ class _$LoadingEventImpl implements _LoadingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingEvent value)? loading,
     TResult Function(_FillingFieldsEvent value)? fillingFields,
-    TResult Function(_AddingTaskEvent value)? addingTask,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -492,7 +630,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
-    required TResult Function(DateTime dateTime) addingTask,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function() saveTodo,
   }) {
     return fillingFields();
   }
@@ -502,7 +641,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
-    TResult? Function(DateTime dateTime)? addingTask,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function()? saveTodo,
   }) {
     return fillingFields?.call();
   }
@@ -512,7 +652,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
-    TResult Function(DateTime dateTime)? addingTask,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function()? saveTodo,
     required TResult orElse(),
   }) {
     if (fillingFields != null) {
@@ -526,7 +667,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingEvent value) loading,
     required TResult Function(_FillingFieldsEvent value) fillingFields,
-    required TResult Function(_AddingTaskEvent value) addingTask,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
   }) {
     return fillingFields(this);
   }
@@ -536,7 +678,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingEvent value)? loading,
     TResult? Function(_FillingFieldsEvent value)? fillingFields,
-    TResult? Function(_AddingTaskEvent value)? addingTask,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
   }) {
     return fillingFields?.call(this);
   }
@@ -546,7 +689,8 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingEvent value)? loading,
     TResult Function(_FillingFieldsEvent value)? fillingFields,
-    TResult Function(_AddingTaskEvent value)? addingTask,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
     required TResult orElse(),
   }) {
     if (fillingFields != null) {
@@ -561,20 +705,20 @@ abstract class _FillingFieldsEvent implements AddTaskEvent {
 }
 
 /// @nodoc
-abstract class _$$AddingTaskEventImplCopyWith<$Res> {
-  factory _$$AddingTaskEventImplCopyWith(_$AddingTaskEventImpl value,
-          $Res Function(_$AddingTaskEventImpl) then) =
-      __$$AddingTaskEventImplCopyWithImpl<$Res>;
+abstract class _$$SetDateTimeEventImplCopyWith<$Res> {
+  factory _$$SetDateTimeEventImplCopyWith(_$SetDateTimeEventImpl value,
+          $Res Function(_$SetDateTimeEventImpl) then) =
+      __$$SetDateTimeEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime dateTime});
 }
 
 /// @nodoc
-class __$$AddingTaskEventImplCopyWithImpl<$Res>
-    extends _$AddTaskEventCopyWithImpl<$Res, _$AddingTaskEventImpl>
-    implements _$$AddingTaskEventImplCopyWith<$Res> {
-  __$$AddingTaskEventImplCopyWithImpl(
-      _$AddingTaskEventImpl _value, $Res Function(_$AddingTaskEventImpl) _then)
+class __$$SetDateTimeEventImplCopyWithImpl<$Res>
+    extends _$AddTaskEventCopyWithImpl<$Res, _$SetDateTimeEventImpl>
+    implements _$$SetDateTimeEventImplCopyWith<$Res> {
+  __$$SetDateTimeEventImplCopyWithImpl(_$SetDateTimeEventImpl _value,
+      $Res Function(_$SetDateTimeEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -582,7 +726,7 @@ class __$$AddingTaskEventImplCopyWithImpl<$Res>
   $Res call({
     Object? dateTime = null,
   }) {
-    return _then(_$AddingTaskEventImpl(
+    return _then(_$SetDateTimeEventImpl(
       null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -593,22 +737,22 @@ class __$$AddingTaskEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddingTaskEventImpl implements _AddingTaskEvent {
-  _$AddingTaskEventImpl(this.dateTime);
+class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
+  _$SetDateTimeEventImpl(this.dateTime);
 
   @override
   final DateTime dateTime;
 
   @override
   String toString() {
-    return 'AddTaskEvent.addingTask(dateTime: $dateTime)';
+    return 'AddTaskEvent.setDateTime(dateTime: $dateTime)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddingTaskEventImpl &&
+            other is _$SetDateTimeEventImpl &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime));
   }
@@ -619,8 +763,8 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddingTaskEventImplCopyWith<_$AddingTaskEventImpl> get copyWith =>
-      __$$AddingTaskEventImplCopyWithImpl<_$AddingTaskEventImpl>(
+  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
+      __$$SetDateTimeEventImplCopyWithImpl<_$SetDateTimeEventImpl>(
           this, _$identity);
 
   @override
@@ -628,9 +772,10 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() fillingFields,
-    required TResult Function(DateTime dateTime) addingTask,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function() saveTodo,
   }) {
-    return addingTask(dateTime);
+    return setDateTime(dateTime);
   }
 
   @override
@@ -638,9 +783,10 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
-    TResult? Function(DateTime dateTime)? addingTask,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function()? saveTodo,
   }) {
-    return addingTask?.call(dateTime);
+    return setDateTime?.call(dateTime);
   }
 
   @override
@@ -648,11 +794,12 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? fillingFields,
-    TResult Function(DateTime dateTime)? addingTask,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function()? saveTodo,
     required TResult orElse(),
   }) {
-    if (addingTask != null) {
-      return addingTask(dateTime);
+    if (setDateTime != null) {
+      return setDateTime(dateTime);
     }
     return orElse();
   }
@@ -662,9 +809,10 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingEvent value) loading,
     required TResult Function(_FillingFieldsEvent value) fillingFields,
-    required TResult Function(_AddingTaskEvent value) addingTask,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
   }) {
-    return addingTask(this);
+    return setDateTime(this);
   }
 
   @override
@@ -672,9 +820,10 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingEvent value)? loading,
     TResult? Function(_FillingFieldsEvent value)? fillingFields,
-    TResult? Function(_AddingTaskEvent value)? addingTask,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
   }) {
-    return addingTask?.call(this);
+    return setDateTime?.call(this);
   }
 
   @override
@@ -682,21 +831,136 @@ class _$AddingTaskEventImpl implements _AddingTaskEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingEvent value)? loading,
     TResult Function(_FillingFieldsEvent value)? fillingFields,
-    TResult Function(_AddingTaskEvent value)? addingTask,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
     required TResult orElse(),
   }) {
-    if (addingTask != null) {
-      return addingTask(this);
+    if (setDateTime != null) {
+      return setDateTime(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddingTaskEvent implements AddTaskEvent {
-  factory _AddingTaskEvent(final DateTime dateTime) = _$AddingTaskEventImpl;
+abstract class _SetDateTimeEvent implements AddTaskEvent {
+  factory _SetDateTimeEvent(final DateTime dateTime) = _$SetDateTimeEventImpl;
 
   DateTime get dateTime;
   @JsonKey(ignore: true)
-  _$$AddingTaskEventImplCopyWith<_$AddingTaskEventImpl> get copyWith =>
+  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveTodoEventImplCopyWith<$Res> {
+  factory _$$SaveTodoEventImplCopyWith(
+          _$SaveTodoEventImpl value, $Res Function(_$SaveTodoEventImpl) then) =
+      __$$SaveTodoEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SaveTodoEventImplCopyWithImpl<$Res>
+    extends _$AddTaskEventCopyWithImpl<$Res, _$SaveTodoEventImpl>
+    implements _$$SaveTodoEventImplCopyWith<$Res> {
+  __$$SaveTodoEventImplCopyWithImpl(
+      _$SaveTodoEventImpl _value, $Res Function(_$SaveTodoEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SaveTodoEventImpl implements _SaveTodoEvent {
+  _$SaveTodoEventImpl();
+
+  @override
+  String toString() {
+    return 'AddTaskEvent.saveTodo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SaveTodoEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() fillingFields,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function() saveTodo,
+  }) {
+    return saveTodo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function()? fillingFields,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function()? saveTodo,
+  }) {
+    return saveTodo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? fillingFields,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function()? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (saveTodo != null) {
+      return saveTodo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingEvent value) loading,
+    required TResult Function(_FillingFieldsEvent value) fillingFields,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
+  }) {
+    return saveTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingEvent value)? loading,
+    TResult? Function(_FillingFieldsEvent value)? fillingFields,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
+  }) {
+    return saveTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingEvent value)? loading,
+    TResult Function(_FillingFieldsEvent value)? fillingFields,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (saveTodo != null) {
+      return saveTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveTodoEvent implements AddTaskEvent {
+  factory _SaveTodoEvent() = _$SaveTodoEventImpl;
 }

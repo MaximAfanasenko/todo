@@ -30,13 +30,25 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
 
     on<_FillingFieldsEvent>((event, emit) {});
 
-    on<_AddingTaskEvent>((event, emit) {
+    on<_SetDateTimeEvent>((event, emit) {
+
+      selectedDateTime = event.dateTime;
+
+      
+    });
+
+    on<_SaveTodoEvent>((event, emit) {
+
+      if (selectedDateTime == null) {
+        return;
+      }
+
       if (todo != null) {
         var todo = Todo(
           id: this.todo!.id,
           name: titleController.text,
           description: textController.text,
-          createdAt: event.dateTime,
+          createdAt: selectedDateTime!,
         );
 
         tasksService.updateData(todo);
@@ -45,13 +57,17 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
           id: const Uuid().v4(),
           name: titleController.text,
           description: textController.text,
-          createdAt: event.dateTime,
+          createdAt: selectedDateTime!,
         );
 
         tasksService.addData(todo);
       }
+
+      emit(AddTaskState.completed());
     });
   }
+
+  DateTime? selectedDateTime;
 
   final titleController = TextEditingController();
   final textController = TextEditingController();
