@@ -1,30 +1,24 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'todo.freezed.dart';
 part 'todo.g.dart';
 
-@freezed
-class Todo with _$Todo {
-  factory Todo({
-    required String id,
-    required String name,
-    required String description,
-    required DateTime createdAt,
-  }) = _Todo;
+@JsonSerializable()
+class Todo {
+  final String id;
+  final String name;
+  final String description;
+  final DateTime createdAt;
 
-  factory Todo.fromJson(Map<String, dynamic> json) => _$$TodoImplFromJson(json);
-}
+  Todo({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.createdAt,
+  });
 
-class JsonDateConverter extends JsonConverter<DateTime, int> {
-  const JsonDateConverter();
+  /// Connect the generated [_$TodoFromJson] function to the `fromJson`
+  factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 
-  @override
-  DateTime fromJson(int json) {
-    return DateTime.fromMillisecondsSinceEpoch(json);
-  }
-
-  @override
-  int toJson(DateTime object) {
-    return object.millisecondsSinceEpoch;
-  }
+  /// Connect the generated [_$TodoToJson] function to the `toJson` method.
+  Map<String, dynamic> toJson() => _$TodoToJson(this);
 }

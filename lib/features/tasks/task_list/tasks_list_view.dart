@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -60,7 +62,8 @@ class TasksListView extends StatelessWidget {
                         child: ListTile(
                           title: Text(todo.name),
                           onTap: () {
-                            context.go('/tasks/addtask');
+                            var jsonString = json.encode(todo.toJson());                   
+                            context.goNamed('updateTask', pathParameters: {'todo' : jsonString});
                           },
                           subtitle: Text(todo.createdAt.toIso8601String()),
                         ),

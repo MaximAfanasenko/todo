@@ -12,20 +12,17 @@ import 'package:todo/generated/locale_keys.g.dart';
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class AddTaskView extends StatelessWidget {
-  AddTaskView({super.key});
+  AddTaskView({super.key, this.todo});
 
   //static const routeName = '/edittask';
 
-  @override
-  Widget build(BuildContext context) {
-    Todo? args;
+  final Todo? todo;
 
-    try {
-      args = ModalRoute.of(context)?.settings.arguments as Todo?;
-    } catch (e) {}
+  @override
+  Widget build(BuildContext context) {  
 
     return BlocProvider<AddTaskBloc>(
-      create: (_) => AddTaskBloc(inject(), args),
+      create: (_) => AddTaskBloc(inject(), todo),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
         buildWhen: (previous, current) =>

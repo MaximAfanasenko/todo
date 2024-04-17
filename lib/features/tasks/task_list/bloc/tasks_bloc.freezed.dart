@@ -641,8 +641,6 @@ abstract class _$$DeleteTodoImplCopyWith<$Res> {
       __$$DeleteTodoImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Todo todo});
-
-  $TodoCopyWith<$Res> get todo;
 }
 
 /// @nodoc
@@ -664,14 +662,6 @@ class __$$DeleteTodoImplCopyWithImpl<$Res>
           : todo // ignore: cast_nullable_to_non_nullable
               as Todo,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TodoCopyWith<$Res> get todo {
-    return $TodoCopyWith<$Res>(_value.todo, (value) {
-      return _then(_value.copyWith(todo: value));
-    });
   }
 }
 
