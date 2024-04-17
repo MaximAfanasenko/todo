@@ -4,44 +4,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/features/profile/profile_view.dart';
 import 'package:todo/generated/locale_keys.g.dart';
+import 'package:todo/base/router/router.dart';
 
 import 'features/tasks/task_list/tasks_list_view.dart';
 import 'features/tasks/add_task/add_task_view.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-
-final GoRouter _router = GoRouter(
-  initialLocation: '/tasks',
-  routes: <RouteBase>[
-    ShellRoute(
-      builder: (context, state, child) {
-        return NavigationExample(childScreen: child);
-      },
-      routes: <RouteBase>[
-        GoRoute(
-          path: '/tasks',
-          builder: (BuildContext context, GoRouterState state) {
-            return TasksListView();
-          },
-          routes: [
-            GoRoute(
-              path: 'addTask',
-              builder: (BuildContext context, GoRouterState state) {
-                return AddTaskView();
-              },
-            ),
-          ],
-        ),
-        GoRoute(
-          path: '/profile',
-          builder: (BuildContext context, GoRouterState state) {
-            return ProfileView();
-          },
-        ),
-      ],
-    ),
-  ],
-);
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -56,7 +24,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       theme: ThemeData(),
       darkTheme: ThemeData.dark(),
-      routerConfig: _router,
+      routerConfig: router,
     );
   }
 }
