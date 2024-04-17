@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/base/cache/cache.dart';
 import 'package:todo/base/di/di.dart';
 import 'app.dart';
 

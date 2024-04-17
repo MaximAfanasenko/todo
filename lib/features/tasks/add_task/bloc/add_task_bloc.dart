@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/base/services/tasks_service.dart';
-import 'package:todo/generated/locale_keys.g.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_task_state.dart';

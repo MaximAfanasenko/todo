@@ -1,13 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo/features/profile/profile_view.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 import 'package:todo/base/router/router.dart';
-
-import 'features/tasks/task_list/tasks_list_view.dart';
-import 'features/tasks/add_task/add_task_view.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
