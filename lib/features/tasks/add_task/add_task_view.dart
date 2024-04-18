@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,21 +18,21 @@ class AddTaskView extends StatefulWidget {
   final titleController = TextEditingController();
   final textController = TextEditingController();
 
-  final Todo? todo;  
-  
+  final Todo? todo;
+
   @override
-  State<StatefulWidget> createState() {    
+  State<StatefulWidget> createState() {
     return _AddTaskViewState();
-  }  
+  }
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
   @override
   @override
-  Widget build(BuildContext context) {  
-
+  Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
-      create: (_) => AddTaskBloc(inject(), widget.todo),
+      create: (_) =>
+          AddTaskBloc(inject(), widget.todo, AddTaskState.fillingFields()),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
         buildWhen: (previous, current) =>
@@ -108,7 +107,9 @@ class _AddTaskViewState extends State<AddTaskView> {
                           if (!context.mounted) return;
 
                           context.read<AddTaskBloc>().add(
-                                AddTaskEvent.saveTodo(widget.titleController.text, widget.textController.text),
+                                AddTaskEvent.saveTodo(
+                                    widget.titleController.text,
+                                    widget.textController.text),
                               );
                         },
                         child: Text("Создать задачу"
