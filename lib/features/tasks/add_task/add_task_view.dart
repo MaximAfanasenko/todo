@@ -27,7 +27,14 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
+
   @override
+  void dispose() {    
+    widget.titleController.dispose();
+    widget.textController.dispose(); 
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
