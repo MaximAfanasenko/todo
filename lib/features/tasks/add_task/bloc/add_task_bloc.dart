@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:todo/features/tasks/models/todo.dart';
@@ -14,11 +13,6 @@ part 'add_task_bloc.freezed.dart';
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   AddTaskBloc(this.tasksService, this.todo)
       : super(AddTaskState.fillingFields()) {
-    if (todo != null) {
-      titleController.text = todo!.name;
-      textController.text = todo!.description;
-    }
-
     sub = tasksService.controller.stream
         .listen((todos) => add(AddTaskEvent.loading()));
 
@@ -29,14 +23,10 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
     on<_FillingFieldsEvent>((event, emit) {});
 
     on<_SetDateTimeEvent>((event, emit) {
-
       selectedDateTime = event.dateTime;
-
-      
     });
 
     on<_SaveTodoEvent>((event, emit) {
-
       if (selectedDateTime == null) {
         return;
       }
@@ -44,8 +34,8 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
       if (todo != null) {
         var todo = Todo(
           id: this.todo!.id,
-          name: titleController.text,
-          description: textController.text,
+          name: event.title,
+          description: event.description,
           createdAt: selectedDateTime!,
         );
 
@@ -53,8 +43,8 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
       } else {
         var todo = Todo(
           id: const Uuid().v4(),
-          name: titleController.text,
-          description: textController.text,
+          name: event.title,
+          description: event.description,
           createdAt: selectedDateTime!,
         );
 
@@ -67,8 +57,6 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
 
   DateTime? selectedDateTime;
 
-  final titleController = TextEditingController();
-  final textController = TextEditingController();
   late StreamSubscription<void> sub;
   late Todo? todo;
   final TasksService tasksService;
@@ -76,8 +64,6 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   @override
   Future<void> close() {
     sub.cancel();
-    titleController.dispose();
-    textController.dispose();
     return super.close();
   }
 }

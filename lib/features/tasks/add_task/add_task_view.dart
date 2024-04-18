@@ -11,18 +11,29 @@ import 'package:todo/generated/locale_keys.g.dart';
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class AddTaskView extends StatelessWidget {
+class AddTaskView extends StatefulWidget {
   AddTaskView({super.key, this.todo});
 
   //static const routeName = '/edittask';
 
-  final Todo? todo;
+  final titleController = TextEditingController();
+  final textController = TextEditingController();
 
+  final Todo? todo;  
+  
+  @override
+  State<StatefulWidget> createState() {    
+    return _AddTaskViewState();
+  }  
+}
+
+class _AddTaskViewState extends State<AddTaskView> {
+  @override
   @override
   Widget build(BuildContext context) {  
 
     return BlocProvider<AddTaskBloc>(
-      create: (_) => AddTaskBloc(inject(), todo),
+      create: (_) => AddTaskBloc(inject(), widget.todo),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
         buildWhen: (previous, current) =>
@@ -51,14 +62,14 @@ class AddTaskView extends StatelessWidget {
                         hintText: LocaleKeys.title.tr(),
                       ),
                       maxLines: 1,
-                      controller: context.read<AddTaskBloc>().titleController,
+                      controller: widget.titleController,
                     ),
                     TextField(
                       decoration: InputDecoration(
                         hintText: LocaleKeys.description.tr(),
                       ),
                       maxLines: 5,
-                      controller: context.read<AddTaskBloc>().textController,
+                      controller: widget.textController,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
@@ -97,7 +108,7 @@ class AddTaskView extends StatelessWidget {
                           if (!context.mounted) return;
 
                           context.read<AddTaskBloc>().add(
-                                AddTaskEvent.saveTodo(),
+                                AddTaskEvent.saveTodo(widget.titleController.text, widget.textController.text),
                               );
                         },
                         child: Text("Создать задачу"

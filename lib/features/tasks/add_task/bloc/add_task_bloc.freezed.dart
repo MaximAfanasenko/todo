@@ -411,7 +411,7 @@ mixin _$AddTaskEvent {
     required TResult Function() loading,
     required TResult Function() fillingFields,
     required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function() saveTodo,
+    required TResult Function(String title, String description) saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -419,7 +419,7 @@ mixin _$AddTaskEvent {
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
     TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function()? saveTodo,
+    TResult? Function(String title, String description)? saveTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -427,7 +427,7 @@ mixin _$AddTaskEvent {
     TResult Function()? loading,
     TResult Function()? fillingFields,
     TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function()? saveTodo,
+    TResult Function(String title, String description)? saveTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -517,7 +517,7 @@ class _$LoadingEventImpl implements _LoadingEvent {
     required TResult Function() loading,
     required TResult Function() fillingFields,
     required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function() saveTodo,
+    required TResult Function(String title, String description) saveTodo,
   }) {
     return loading();
   }
@@ -528,7 +528,7 @@ class _$LoadingEventImpl implements _LoadingEvent {
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
     TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function()? saveTodo,
+    TResult? Function(String title, String description)? saveTodo,
   }) {
     return loading?.call();
   }
@@ -539,7 +539,7 @@ class _$LoadingEventImpl implements _LoadingEvent {
     TResult Function()? loading,
     TResult Function()? fillingFields,
     TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function()? saveTodo,
+    TResult Function(String title, String description)? saveTodo,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -631,7 +631,7 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
     required TResult Function() loading,
     required TResult Function() fillingFields,
     required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function() saveTodo,
+    required TResult Function(String title, String description) saveTodo,
   }) {
     return fillingFields();
   }
@@ -642,7 +642,7 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
     TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function()? saveTodo,
+    TResult? Function(String title, String description)? saveTodo,
   }) {
     return fillingFields?.call();
   }
@@ -653,7 +653,7 @@ class _$FillingFieldsEventImpl implements _FillingFieldsEvent {
     TResult Function()? loading,
     TResult Function()? fillingFields,
     TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function()? saveTodo,
+    TResult Function(String title, String description)? saveTodo,
     required TResult orElse(),
   }) {
     if (fillingFields != null) {
@@ -773,7 +773,7 @@ class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
     required TResult Function() loading,
     required TResult Function() fillingFields,
     required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function() saveTodo,
+    required TResult Function(String title, String description) saveTodo,
   }) {
     return setDateTime(dateTime);
   }
@@ -784,7 +784,7 @@ class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
     TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function()? saveTodo,
+    TResult? Function(String title, String description)? saveTodo,
   }) {
     return setDateTime?.call(dateTime);
   }
@@ -795,7 +795,7 @@ class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
     TResult Function()? loading,
     TResult Function()? fillingFields,
     TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function()? saveTodo,
+    TResult Function(String title, String description)? saveTodo,
     required TResult orElse(),
   }) {
     if (setDateTime != null) {
@@ -856,6 +856,8 @@ abstract class _$$SaveTodoEventImplCopyWith<$Res> {
   factory _$$SaveTodoEventImplCopyWith(
           _$SaveTodoEventImpl value, $Res Function(_$SaveTodoEventImpl) then) =
       __$$SaveTodoEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title, String description});
 }
 
 /// @nodoc
@@ -865,26 +867,59 @@ class __$$SaveTodoEventImplCopyWithImpl<$Res>
   __$$SaveTodoEventImplCopyWithImpl(
       _$SaveTodoEventImpl _value, $Res Function(_$SaveTodoEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? description = null,
+  }) {
+    return _then(_$SaveTodoEventImpl(
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SaveTodoEventImpl implements _SaveTodoEvent {
-  _$SaveTodoEventImpl();
+  _$SaveTodoEventImpl(this.title, this.description);
+
+  @override
+  final String title;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'AddTaskEvent.saveTodo()';
+    return 'AddTaskEvent.saveTodo(title: $title, description: $description)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SaveTodoEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SaveTodoEventImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, title, description);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
+      __$$SaveTodoEventImplCopyWithImpl<_$SaveTodoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -892,9 +927,9 @@ class _$SaveTodoEventImpl implements _SaveTodoEvent {
     required TResult Function() loading,
     required TResult Function() fillingFields,
     required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function() saveTodo,
+    required TResult Function(String title, String description) saveTodo,
   }) {
-    return saveTodo();
+    return saveTodo(title, description);
   }
 
   @override
@@ -903,9 +938,9 @@ class _$SaveTodoEventImpl implements _SaveTodoEvent {
     TResult? Function()? loading,
     TResult? Function()? fillingFields,
     TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function()? saveTodo,
+    TResult? Function(String title, String description)? saveTodo,
   }) {
-    return saveTodo?.call();
+    return saveTodo?.call(title, description);
   }
 
   @override
@@ -914,11 +949,11 @@ class _$SaveTodoEventImpl implements _SaveTodoEvent {
     TResult Function()? loading,
     TResult Function()? fillingFields,
     TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function()? saveTodo,
+    TResult Function(String title, String description)? saveTodo,
     required TResult orElse(),
   }) {
     if (saveTodo != null) {
-      return saveTodo();
+      return saveTodo(title, description);
     }
     return orElse();
   }
@@ -962,5 +997,12 @@ class _$SaveTodoEventImpl implements _SaveTodoEvent {
 }
 
 abstract class _SaveTodoEvent implements AddTaskEvent {
-  factory _SaveTodoEvent() = _$SaveTodoEventImpl;
+  factory _SaveTodoEvent(final String title, final String description) =
+      _$SaveTodoEventImpl;
+
+  String get title;
+  String get description;
+  @JsonKey(ignore: true)
+  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

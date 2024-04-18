@@ -14,11 +14,7 @@ class TasksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(
-      create: (_) {
-        var tasksBloc = TasksBloc(inject());
-        tasksBloc.add(TasksEvent.loadData());
-        return tasksBloc;
-      },
+      create: (_) => TasksBloc(inject())..add(TasksEvent.loadData()),
       child: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
           return state.when(
@@ -62,8 +58,9 @@ class TasksListView extends StatelessWidget {
                         child: ListTile(
                           title: Text(todo.name),
                           onTap: () {
-                            var jsonString = json.encode(todo.toJson());                   
-                            context.goNamed('updateTask', pathParameters: {'todo' : jsonString});
+                            var jsonString = json.encode(todo.toJson());
+                            context.goNamed('updateTask',
+                                pathParameters: {'todo': jsonString});
                           },
                           subtitle: Text(todo.createdAt.toIso8601String()),
                         ),
