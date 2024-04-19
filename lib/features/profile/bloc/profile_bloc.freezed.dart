@@ -168,19 +168,20 @@ abstract class _DefaultState implements ProfileState {
 mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() save,
+    required TResult Function(String name, String surname, String imagePath)
+        save,
     required TResult Function() setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? save,
+    TResult? Function(String name, String surname, String imagePath)? save,
     TResult? Function()? setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? save,
+    TResult Function(String name, String surname, String imagePath)? save,
     TResult Function()? setImage,
     required TResult orElse(),
   }) =>
@@ -229,6 +230,8 @@ abstract class _$$SaveEventImplCopyWith<$Res> {
   factory _$$SaveEventImplCopyWith(
           _$SaveEventImpl value, $Res Function(_$SaveEventImpl) then) =
       __$$SaveEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name, String surname, String imagePath});
 }
 
 /// @nodoc
@@ -238,54 +241,96 @@ class __$$SaveEventImplCopyWithImpl<$Res>
   __$$SaveEventImplCopyWithImpl(
       _$SaveEventImpl _value, $Res Function(_$SaveEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? surname = null,
+    Object? imagePath = null,
+  }) {
+    return _then(_$SaveEventImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SaveEventImpl implements _SaveEvent {
-  _$SaveEventImpl();
+  _$SaveEventImpl(this.name, this.surname, this.imagePath);
+
+  @override
+  final String name;
+  @override
+  final String surname;
+  @override
+  final String imagePath;
 
   @override
   String toString() {
-    return 'ProfileEvent.save()';
+    return 'ProfileEvent.save(name: $name, surname: $surname, imagePath: $imagePath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SaveEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SaveEventImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, name, surname, imagePath);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveEventImplCopyWith<_$SaveEventImpl> get copyWith =>
+      __$$SaveEventImplCopyWithImpl<_$SaveEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() save,
+    required TResult Function(String name, String surname, String imagePath)
+        save,
     required TResult Function() setImage,
   }) {
-    return save();
+    return save(name, surname, imagePath);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? save,
+    TResult? Function(String name, String surname, String imagePath)? save,
     TResult? Function()? setImage,
   }) {
-    return save?.call();
+    return save?.call(name, surname, imagePath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? save,
+    TResult Function(String name, String surname, String imagePath)? save,
     TResult Function()? setImage,
     required TResult orElse(),
   }) {
     if (save != null) {
-      return save();
+      return save(name, surname, imagePath);
     }
     return orElse();
   }
@@ -323,7 +368,16 @@ class _$SaveEventImpl implements _SaveEvent {
 }
 
 abstract class _SaveEvent implements ProfileEvent {
-  factory _SaveEvent() = _$SaveEventImpl;
+  factory _SaveEvent(
+          final String name, final String surname, final String imagePath) =
+      _$SaveEventImpl;
+
+  String get name;
+  String get surname;
+  String get imagePath;
+  @JsonKey(ignore: true)
+  _$$SaveEventImplCopyWith<_$SaveEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -364,7 +418,8 @@ class _$SetImageEventImpl implements _SetImageEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() save,
+    required TResult Function(String name, String surname, String imagePath)
+        save,
     required TResult Function() setImage,
   }) {
     return setImage();
@@ -373,7 +428,7 @@ class _$SetImageEventImpl implements _SetImageEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? save,
+    TResult? Function(String name, String surname, String imagePath)? save,
     TResult? Function()? setImage,
   }) {
     return setImage?.call();
@@ -382,7 +437,7 @@ class _$SetImageEventImpl implements _SetImageEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? save,
+    TResult Function(String name, String surname, String imagePath)? save,
     TResult Function()? setImage,
     required TResult orElse(),
   }) {

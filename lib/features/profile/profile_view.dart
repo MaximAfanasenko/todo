@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/base/di/di.dart';
 import 'package:todo/features/profile/bloc/profile_bloc.dart';
 
 class ProfileView extends StatefulWidget {
@@ -27,7 +28,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>(
-      create: (_) => ProfileBloc(ProfileState.defaultState()),
+      create: (_) => ProfileBloc(inject(), ProfileState.defaultState()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         builder: (context, state) {
           return state.when(
@@ -42,6 +43,20 @@ class _ProfileViewState extends State<ProfileView> {
                       height: 20,
                     ),
                     Image.file(context.read<ProfileBloc>().profileImage),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: () => {
+                          context
+                              .read<ProfileBloc>()
+                              .add(ProfileEvent.setImage())
+                        },
+                        child: const Text("Выбрать фото профиля"),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -63,7 +78,13 @@ class _ProfileViewState extends State<ProfileView> {
                       height: 56,
                       child: ElevatedButton(
                         onPressed: () => {
-                          context.read<ProfileBloc>().add(ProfileEvent.save()),
+                          context.read<ProfileBloc>().add(
+                                ProfileEvent.save(
+                                  widget.nameController.text,
+                                  widget.surnameController.text,
+                                  context.read<ProfileBloc>().profileImagePath,
+                                ),
+                              ),
                         },
                         child: const Text("Сохранить"),
                       ),
