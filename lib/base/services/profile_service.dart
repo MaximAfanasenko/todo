@@ -13,8 +13,10 @@ class ProfileService {
 
   //final controller = StreamController<Profile>.broadcast();
 
-  Future readProfile() async {
+  Future<Profile?> readProfile() async {
     final data = await profileCache.readProfile();
+
+    return data;
     //controller.add(data);
   }
 
