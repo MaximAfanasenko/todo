@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -39,12 +41,7 @@ class _ProfileViewState extends State<ProfileView> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Image(
-                      height: 150,
-                      image: NetworkImage(
-                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                      ),
-                    ),
+                    Image.file(context.read<ProfileBloc>().profileImage),
                     const SizedBox(
                       height: 20,
                     ),

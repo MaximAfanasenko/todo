@@ -169,32 +169,38 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() save,
+    required TResult Function() setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? save,
+    TResult? Function()? setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? save,
+    TResult Function()? setImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SaveEvent value) save,
+    required TResult Function(_SetImageEvent value) setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SaveEvent value)? save,
+    TResult? Function(_SetImageEvent value)? setImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SaveEvent value)? save,
+    TResult Function(_SetImageEvent value)? setImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -257,6 +263,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() save,
+    required TResult Function() setImage,
   }) {
     return save();
   }
@@ -265,6 +272,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? save,
+    TResult? Function()? setImage,
   }) {
     return save?.call();
   }
@@ -273,6 +281,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? save,
+    TResult Function()? setImage,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -285,6 +294,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SaveEvent value) save,
+    required TResult Function(_SetImageEvent value) setImage,
   }) {
     return save(this);
   }
@@ -293,6 +303,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SaveEvent value)? save,
+    TResult? Function(_SetImageEvent value)? setImage,
   }) {
     return save?.call(this);
   }
@@ -301,6 +312,7 @@ class _$SaveEventImpl implements _SaveEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SaveEvent value)? save,
+    TResult Function(_SetImageEvent value)? setImage,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -312,4 +324,106 @@ class _$SaveEventImpl implements _SaveEvent {
 
 abstract class _SaveEvent implements ProfileEvent {
   factory _SaveEvent() = _$SaveEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SetImageEventImplCopyWith<$Res> {
+  factory _$$SetImageEventImplCopyWith(
+          _$SetImageEventImpl value, $Res Function(_$SetImageEventImpl) then) =
+      __$$SetImageEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetImageEventImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$SetImageEventImpl>
+    implements _$$SetImageEventImplCopyWith<$Res> {
+  __$$SetImageEventImplCopyWithImpl(
+      _$SetImageEventImpl _value, $Res Function(_$SetImageEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SetImageEventImpl implements _SetImageEvent {
+  _$SetImageEventImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.setImage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SetImageEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() save,
+    required TResult Function() setImage,
+  }) {
+    return setImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? save,
+    TResult? Function()? setImage,
+  }) {
+    return setImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? save,
+    TResult Function()? setImage,
+    required TResult orElse(),
+  }) {
+    if (setImage != null) {
+      return setImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SaveEvent value) save,
+    required TResult Function(_SetImageEvent value) setImage,
+  }) {
+    return setImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SaveEvent value)? save,
+    TResult? Function(_SetImageEvent value)? setImage,
+  }) {
+    return setImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SaveEvent value)? save,
+    TResult Function(_SetImageEvent value)? setImage,
+    required TResult orElse(),
+  }) {
+    if (setImage != null) {
+      return setImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetImageEvent implements ProfileEvent {
+  factory _SetImageEvent() = _$SetImageEventImpl;
 }
