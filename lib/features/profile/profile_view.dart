@@ -40,12 +40,22 @@ class _ProfileViewState extends State<ProfileView> {
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
                         height: 20,
                       ),
-                      Image.file(context.read<ProfileBloc>().profileImage),
+                      ClipOval(
+                          child: Image.file(
+                            fit: BoxFit.cover,
+                            height: 300,
+                          width: 300,
+                          context.read<ProfileBloc>().profileImage,
+                          color: Colors.lightGreen,
+                          colorBlendMode: BlendMode.difference,
+                          filterQuality: FilterQuality.high,
+                        ),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -66,7 +76,8 @@ class _ProfileViewState extends State<ProfileView> {
                       TextField(
                         controller: widget.nameController,
                         decoration: InputDecoration(
-                            hintText: context.read<ProfileBloc>().name),
+                          hintText: context.read<ProfileBloc>().name,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -74,7 +85,8 @@ class _ProfileViewState extends State<ProfileView> {
                       TextField(
                         controller: widget.surnameController,
                         decoration: InputDecoration(
-                            hintText: context.read<ProfileBloc>().surname),
+                          hintText: context.read<ProfileBloc>().surname,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -109,54 +121,58 @@ class _ProfileViewState extends State<ProfileView> {
                       SizedBox(
                         height: 56,
                         child: ElevatedButton(
+                          child: const Text("Сменить язык"),
                           onPressed: () => {
                             showModalBottomSheet<void>(
                               context: context,
                               builder: (BuildContext context) {
                                 return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(40),
+                                    ),
+                                  ),
                                   height: 200,
-                                  color: Colors.amber,
                                   child: Center(
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.min,
                                       children: <Widget>[
-                                        const Text('Modal BottomSheet'),
+                                        const Text('Сменить язык'),
                                         ElevatedButton(
-                                          child:
-                                              const Text('Close BottomSheet'),
-                                          onPressed: () =>
-                                              Navigator.pop(context),
+                                          child: const Text('Английский'),
+                                          onPressed: () {
+                                            context.setLocale(
+                                                const Locale('en', 'EN'));
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                        ElevatedButton(
+                                          child: const Text('Русский'),
+                                          onPressed: () {
+                                            context.setLocale(
+                                                const Locale('ru', 'RU'));
+                                            Navigator.pop(context);
+                                          },
                                         ),
                                       ],
                                     ),
                                   ),
                                 );
                               },
-                            )
-
-                            //context.setLocale(const Locale('en', 'EN')),
+                            ),
                           },
-                          child: const Text("Английский"),
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: () => {
-                            context.setLocale(const Locale('ru', 'RU')),
-                          },
-                          child: const Text("Русский"),
-                        ),
+                        height: 100,
                       ),
                     ],
                   ),
                 ),
-                
               );
             },
           );
