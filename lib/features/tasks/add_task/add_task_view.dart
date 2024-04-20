@@ -14,10 +14,6 @@ class AddTaskView extends StatefulWidget {
   AddTaskView({super.key, this.todo});
 
   static String get routeName => "/addtask";
-
-  final titleController = TextEditingController();
-  final textController = TextEditingController();
-
   final Todo? todo;
 
   @override
@@ -27,10 +23,14 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
+
+  final titleController = TextEditingController();
+  final textController = TextEditingController();  
+
   @override
   void dispose() {
-    widget.titleController.dispose();
-    widget.textController.dispose();
+    titleController.dispose();
+    textController.dispose();
     super.dispose();
   }
 
@@ -67,14 +67,14 @@ class _AddTaskViewState extends State<AddTaskView> {
                         hintText: LocaleKeys.title.tr(),
                       ),
                       maxLines: 1,
-                      controller: widget.titleController,
+                      controller: titleController,
                     ),
                     TextField(
                       decoration: InputDecoration(
                         hintText: LocaleKeys.description.tr(),
                       ),
                       maxLines: 5,
-                      controller: widget.textController,
+                      controller: textController,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
@@ -114,8 +114,8 @@ class _AddTaskViewState extends State<AddTaskView> {
 
                           context.read<AddTaskBloc>().add(
                                 AddTaskEvent.saveTodo(
-                                  widget.titleController.text,
-                                  widget.textController.text,
+                                  titleController.text,
+                                  textController.text,
                                 ),
                               );
                         },

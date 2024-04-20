@@ -9,10 +9,7 @@ import 'package:todo/features/profile/bloc/profile_bloc.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
-  static String get routeName => "/profile";
-
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController surnameController = TextEditingController();
+  static String get routeName => "/profile";  
 
   @override
   State<StatefulWidget> createState() {
@@ -21,10 +18,13 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController surnameController = TextEditingController();
+
   @override
   void dispose() {
-    widget.nameController.dispose();
-    widget.surnameController.dispose();
+    nameController.dispose();
+    surnameController.dispose();
     super.dispose();
   }
 
@@ -77,7 +77,7 @@ class _ProfileViewState extends State<ProfileView> {
                         height: 20,
                       ),
                       TextField(
-                        controller: widget.nameController,
+                        controller: nameController,
                         decoration: InputDecoration(
                           hintText: context.read<ProfileBloc>().name,
                         ),
@@ -86,7 +86,7 @@ class _ProfileViewState extends State<ProfileView> {
                         height: 20,
                       ),
                       TextField(
-                        controller: widget.surnameController,
+                        controller: surnameController,
                         decoration: InputDecoration(
                           hintText: context.read<ProfileBloc>().surname,
                         ),
@@ -100,8 +100,8 @@ class _ProfileViewState extends State<ProfileView> {
                           onPressed: () => {
                             context.read<ProfileBloc>().add(
                                   ProfileEvent.save(
-                                    widget.nameController.text,
-                                    widget.surnameController.text,
+                                    nameController.text,
+                                    surnameController.text,
                                     context
                                         .read<ProfileBloc>()
                                         .profileImagePath,
