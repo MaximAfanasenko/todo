@@ -38,7 +38,7 @@ class _AddTaskViewState extends State<AddTaskView> {
   Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
       create: (_) =>
-          AddTaskBloc(inject(), widget.todo, AddTaskState.fillingFields()),
+          AddTaskBloc(inject(), widget.todo),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
         buildWhen: (previous, current) =>

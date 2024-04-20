@@ -31,7 +31,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>(
-      create: (_) => ProfileBloc(inject(), ProfileState.loading())
+      create: (_) => ProfileBloc(inject())
         ..add(ProfileEvent.load()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         builder: (context, state) {

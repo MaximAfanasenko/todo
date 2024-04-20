@@ -16,7 +16,7 @@ class TasksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(
-      create: (_) => TasksBloc(inject(), TasksState.data(List.empty()))
+      create: (_) => TasksBloc(inject())
         ..add(TasksEvent.loadData()),
       child: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {

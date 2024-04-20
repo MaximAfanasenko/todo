@@ -10,7 +10,7 @@ part 'tasks_event.dart';
 part 'tasks_bloc.freezed.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
-  TasksBloc(this.service, super.initialState) {
+  TasksBloc(this.service) : super(TasksState.data(List.empty())) {
     sub = service.controller.stream
         .listen((todos) => add(TasksEvent.setData(todos)));
 
