@@ -13,7 +13,7 @@ final GoRouter router = GoRouter(
   routes: <RouteBase>[
     ShellRoute(
       builder: (context, state, child) {
-        return NavigationExample(childScreen: child);
+        return Navigation(childScreen: child);
       },
       routes: <RouteBase>[
         GoRoute(

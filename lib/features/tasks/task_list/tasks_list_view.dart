@@ -11,6 +11,8 @@ import 'package:easy_localization/easy_localization.dart';
 class TasksListView extends StatelessWidget {
   TasksListView({super.key});
 
+  static String get routeName => "/tasks";
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(

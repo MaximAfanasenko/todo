@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:todo/features/profile/profile_view.dart';
+import 'package:todo/features/tasks/add_task/add_task_view.dart';
+import 'package:todo/features/tasks/task_list/tasks_list_view.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 import 'package:todo/base/router/router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
-/// The Widget that configures your application.
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -24,16 +27,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key, required this.childScreen});
+class Navigation extends StatefulWidget {
+  const Navigation({super.key, required this.childScreen});
 
   final Widget childScreen;
 
   @override
-  State<NavigationExample> createState() => _NavigationExampleState();
+  State<Navigation> createState() => _NavigationState();
 }
 
-class _NavigationExampleState extends State<NavigationExample> {
+class _NavigationState extends State<Navigation> {
   int currentPageIndex = 0;
 
   @override
@@ -46,7 +49,7 @@ class _NavigationExampleState extends State<NavigationExample> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              context.go('/tasks/addtask');
+              context.go(TasksListView.routeName + AddTaskView.routeName);
             },
           ),
         ],
@@ -54,11 +57,11 @@ class _NavigationExampleState extends State<NavigationExample> {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           if (index == 0) {
-            context.go('/tasks');
+            context.go(TasksListView.routeName);
           }
 
           if (index == 1) {
-            context.go('/profile');
+            context.go(ProfileView.routeName);
           }
 
           setState(() {

@@ -13,7 +13,7 @@ import 'package:todo/generated/locale_keys.g.dart';
 class AddTaskView extends StatefulWidget {
   AddTaskView({super.key, this.todo});
 
-  //static const routeName = '/edittask';
+  static String get routeName => "/addtask";
 
   final titleController = TextEditingController();
   final textController = TextEditingController();

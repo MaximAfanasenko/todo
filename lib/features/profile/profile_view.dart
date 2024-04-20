@@ -9,8 +9,10 @@ import 'package:todo/features/profile/bloc/profile_bloc.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController surnameController = TextEditingController();
+  static String get routeName => "/profile";
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController surnameController = TextEditingController();
 
   @override
   State<StatefulWidget> createState() {
