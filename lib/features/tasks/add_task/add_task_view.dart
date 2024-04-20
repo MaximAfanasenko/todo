@@ -23,9 +23,8 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
-
   final titleController = TextEditingController();
-  final textController = TextEditingController();  
+  final textController = TextEditingController();
 
   @override
   void dispose() {
@@ -37,8 +36,7 @@ class _AddTaskViewState extends State<AddTaskView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
-      create: (_) =>
-          AddTaskBloc(inject(), widget.todo),
+      create: (_) => AddTaskBloc(inject(), widget.todo),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
         buildWhen: (previous, current) =>

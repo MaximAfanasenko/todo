@@ -15,7 +15,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this.profileService) : super(ProfileState.loading()) {
     on<_LoadEvent>((event, emit) async {
       emit(ProfileState.loading());
-      
+
       var profile = await profileService.readProfile();
 
       if (profile == null) {
@@ -51,7 +51,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         profileImagePath: event.imagePath,
       );
 
-      profileService.saveProfile(profile);
+      await profileService.saveProfile(profile);
 
       emit(ProfileState.defaultState());
     });

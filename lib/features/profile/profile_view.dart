@@ -9,7 +9,7 @@ import 'package:todo/features/profile/bloc/profile_bloc.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
-  static String get routeName => "/profile";  
+  static String get routeName => "/profile";
 
   @override
   State<StatefulWidget> createState() {
@@ -31,8 +31,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>(
-      create: (_) => ProfileBloc(inject())
-        ..add(ProfileEvent.load()),
+      create: (_) => ProfileBloc(inject())..add(ProfileEvent.load()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         builder: (context, state) {
           return state.when(
