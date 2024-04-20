@@ -21,10 +21,19 @@ class CodegenLoader extends AssetLoader{
   "createOrChange": "Создать/Изменить",
   "create": "Создать",
   "change": "Изменить",
-  "title": "Title",
+  "title": "Заголовок",
   "description": "Описание",
   "chooseDateAndCreate": "Выбрать дату и создать",
-  "chooseDateAndChange": "Выбрать дату и обновить"
+  "chooseDateAndUpdate": "Выбрать дату и обновить",
+  "chooseProfilePhoto": "Выбрать фото профиля",
+  "save": "Сохранить",
+  "chooseLanguage": "Сменить язык",
+  "english": "Английский",
+  "russian": "Русский",
+  "chooseDate": "Выбрать дату",
+  "createTask": "Создать задачу",
+  "list": "Список",
+  "profile": "Профиль"
 };
 static const Map<String,dynamic> en_EN = {
   "appName": "TODO",
@@ -35,8 +44,17 @@ static const Map<String,dynamic> en_EN = {
   "change": "Change",
   "title": "Title",
   "description": "Description",
-  "chooseDateAndCreate": "Сhoose Date And Create",
-  "chooseDateAndChange": "Сhoose Date And Change"
+  "chooseDateAndCreate": "Сhoose date and create",
+  "chooseDateAndUpdate": "Сhoose date and update",
+  "chooseProfilePhoto": "Choose profile photo",
+  "save": "Save",
+  "chooseLanguage": "Choose language",
+  "english": "English",
+  "russian": "Russian",
+  "chooseDate": "Choose date",
+  "createTask": "Create task",
+  "list": "List",
+  "profile": "Profile"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru_RU": ru_RU, "en_EN": en_EN};
 }

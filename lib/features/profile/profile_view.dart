@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/profile/bloc/profile_bloc.dart';
+import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
   TextEditingController nameController = TextEditingController();
@@ -46,9 +47,9 @@ class _ProfileViewState extends State<ProfileView> {
                         height: 20,
                       ),
                       ClipOval(
-                          child: Image.file(
-                            fit: BoxFit.cover,
-                            height: 300,
+                        child: Image.file(
+                          fit: BoxFit.cover,
+                          height: 300,
                           width: 300,
                           context.read<ProfileBloc>().profileImage,
                           color: Colors.lightGreen,
@@ -67,7 +68,7 @@ class _ProfileViewState extends State<ProfileView> {
                                 .read<ProfileBloc>()
                                 .add(ProfileEvent.setImage()),
                           },
-                          child: const Text("Выбрать фото профиля"),
+                          child: Text(LocaleKeys.chooseProfilePhoto.tr()),
                         ),
                       ),
                       const SizedBox(
@@ -105,14 +106,14 @@ class _ProfileViewState extends State<ProfileView> {
                                   ),
                                 ),
                           },
-                          child: const Text("Сохранить"),
+                          child: Text(LocaleKeys.save.tr()),
                         ),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      const Text(
-                        "Выбор языка",
+                      Text(
+                        LocaleKeys.chooseLanguage.tr(),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
@@ -121,7 +122,7 @@ class _ProfileViewState extends State<ProfileView> {
                       SizedBox(
                         height: 56,
                         child: ElevatedButton(
-                          child: const Text("Сменить язык"),
+                          child: Text(LocaleKeys.chooseLanguage.tr()),
                           onPressed: () => {
                             showModalBottomSheet<void>(
                               context: context,
@@ -141,20 +142,22 @@ class _ProfileViewState extends State<ProfileView> {
                                           MainAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.min,
                                       children: <Widget>[
-                                        const Text('Сменить язык'),
+                                        Text(LocaleKeys.chooseLanguage.tr()),
                                         ElevatedButton(
-                                          child: const Text('Английский'),
+                                          child: Text(LocaleKeys.english.tr()),
                                           onPressed: () {
                                             context.setLocale(
-                                                const Locale('en', 'EN'));
+                                              const Locale('en', 'EN'),
+                                            );
                                             Navigator.pop(context);
                                           },
                                         ),
                                         ElevatedButton(
-                                          child: const Text('Русский'),
+                                          child: Text(LocaleKeys.russian.tr()),
                                           onPressed: () {
                                             context.setLocale(
-                                                const Locale('ru', 'RU'));
+                                              const Locale('ru', 'RU'),
+                                            );
                                             Navigator.pop(context);
                                           },
                                         ),

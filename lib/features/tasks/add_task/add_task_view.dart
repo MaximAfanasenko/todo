@@ -27,14 +27,13 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
-
   @override
-  void dispose() {    
+  void dispose() {
     widget.titleController.dispose();
-    widget.textController.dispose(); 
+    widget.textController.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
@@ -102,9 +101,9 @@ class _AddTaskViewState extends State<AddTaskView> {
                                 ),
                               );
                         },
-                        child: Text("Выбрать дату"
-                            //LocaleKeys.chooseDateAndCreate.tr(),
-                            ),
+                        child: Text(
+                          LocaleKeys.chooseDate.tr(),
+                        ),
                       ),
                     ),
                     Padding(
@@ -115,13 +114,14 @@ class _AddTaskViewState extends State<AddTaskView> {
 
                           context.read<AddTaskBloc>().add(
                                 AddTaskEvent.saveTodo(
-                                    widget.titleController.text,
-                                    widget.textController.text),
+                                  widget.titleController.text,
+                                  widget.textController.text,
+                                ),
                               );
                         },
-                        child: Text("Создать задачу"
-                            //LocaleKeys.chooseDateAndCreate.tr(),
-                            ),
+                        child: Text(
+                          LocaleKeys.createTask.tr(),
+                        ),
                       ),
                     ),
                   ],

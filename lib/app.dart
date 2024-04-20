@@ -67,18 +67,18 @@ class _NavigationExampleState extends State<NavigationExample> {
         },
         indicatorColor: Colors.amber,
         selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
+        destinations: <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'List',
+            selectedIcon: const Icon(Icons.list),
+            icon: const Icon(Icons.list_outlined),
+            label: LocaleKeys.list.tr(),
           ),
           NavigationDestination(
-            icon: Badge(
+            icon: const Badge(
               label: Text('2'),
-              child: Icon(Icons.messenger_sharp),
+              child: Icon(Icons.supervised_user_circle),
             ),
-            label: 'Profile',
+            label: LocaleKeys.profile.tr(),
           ),
         ],
       ),

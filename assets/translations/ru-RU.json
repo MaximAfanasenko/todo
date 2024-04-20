@@ -8,5 +8,14 @@
   "title" : "Заголовок",
   "description" : "Описание",
   "chooseDateAndCreate" : "Выбрать дату и создать",
-  "chooseDateAndChange" : "Выбрать дату и обновить"
+  "chooseDateAndUpdate" : "Выбрать дату и обновить",
+  "chooseProfilePhoto" : "Выбрать фото профиля",
+  "save" : "Сохранить",
+  "chooseLanguage" : "Сменить язык",
+  "english" : "Английский",
+  "russian" : "Русский",
+  "chooseDate" : "Выбрать дату",
+  "createTask" : "Создать задачу",
+  "list" : "Список",
+  "profile" : "Профиль"
 }

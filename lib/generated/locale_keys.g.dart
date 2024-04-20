@@ -10,6 +10,15 @@ abstract class  LocaleKeys {
   static const title = 'title';
   static const description = 'description';
   static const chooseDateAndCreate = 'chooseDateAndCreate';
-  static const chooseDateAndChange = 'chooseDateAndChange';
+  static const chooseDateAndUpdate = 'chooseDateAndUpdate';
+  static const chooseProfilePhoto = 'chooseProfilePhoto';
+  static const save = 'save';
+  static const chooseLanguage = 'chooseLanguage';
+  static const english = 'english';
+  static const russian = 'russian';
+  static const chooseDate = 'chooseDate';
+  static const createTask = 'createTask';
+  static const list = 'list';
+  static const profile = 'profile';
 
 }

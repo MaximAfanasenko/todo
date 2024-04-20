@@ -11,21 +11,12 @@ class ProfileService {
 
   ProfileService({required this.profileCache});
 
-  //final controller = StreamController<Profile>.broadcast();
-
   Future<Profile?> readProfile() async {
     final data = await profileCache.readProfile();
-
     return data;
-    //controller.add(data);
   }
 
   Future saveProfile(Profile profile) async {
     await profileCache.saveProfile(profile);
-    //readData();
   }
-
-  // void dispose() {
-  //   //controller.close();
-  // }
 }

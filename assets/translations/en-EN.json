@@ -7,6 +7,15 @@
   "change" : "Change",
   "title" : "Title",
   "description" : "Description",
-  "chooseDateAndCreate" : "Сhoose Date And Create",
-  "chooseDateAndChange" : "Сhoose Date And Change"
+  "chooseDateAndCreate" : "Сhoose date and create",
+  "chooseDateAndUpdate" : "Сhoose date and update",
+  "chooseProfilePhoto" : "Choose profile photo",
+  "save" : "Save",
+  "chooseLanguage" : "Choose language",
+  "english" : "English",
+  "russian" : "Russian",
+  "chooseDate" : "Choose date",
+  "createTask" : "Create task",
+  "list" : "List",
+  "profile" : "Profile"
 }
