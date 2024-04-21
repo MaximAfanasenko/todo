@@ -14,6 +14,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     sub = service.controller.stream
         .listen((todos) => add(TasksEvent.setData(todos)));
 
+    bind();
+  }
+
+  bind() {
     on<_LoadEvent>((_, emit) async {
       service.readData();
     });

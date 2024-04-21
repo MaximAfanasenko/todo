@@ -13,6 +13,11 @@ part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this.profileService) : super(ProfileState.loading()) {
+    
+    bind();
+  }
+
+  bind() {
     on<_LoadEvent>((event, emit) async {
       emit(ProfileState.loading());
 

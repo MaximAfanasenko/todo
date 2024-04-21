@@ -13,9 +13,14 @@ part 'add_task_bloc.freezed.dart';
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   AddTaskBloc(this.tasksService, this.todo)
       : super(AddTaskState.fillingFields()) {
+        
     sub = tasksService.controller.stream
         .listen((todos) => add(AddTaskEvent.loading()));
 
+    bind();
+  }
+
+  bind() {
     on<_LoadingEvent>((_, emit) {
       emit(AddTaskState.loading());
     });
