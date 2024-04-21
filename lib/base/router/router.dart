@@ -30,12 +30,10 @@ final GoRouter router = GoRouter(
             ),
             GoRoute(
               name: 'updateTask',
-              path: 'updateTask/:todo',
+              path: 'updateTask/:todoId',
               builder: (BuildContext context, GoRouterState state) {
-
-                var jsonData = json.decode(state.pathParameters["todo"]!);
-                var todo = Todo.fromJson(jsonData);
-                return AddTaskView(todo: todo);
+                var todoId = state.pathParameters["todoId"]!;
+                return AddTaskView(todoId: todoId);
               },
             ),
           ],

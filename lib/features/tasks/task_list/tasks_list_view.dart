@@ -60,9 +60,7 @@ class TasksListView extends StatelessWidget {
                         child: ListTile(
                           title: Text(todo.name),
                           onTap: () {
-                            var jsonString = json.encode(todo.toJson());
-                            context.goNamed('updateTask',
-                                pathParameters: {'todo': jsonString});
+                            context.goNamed('updateTask', pathParameters: {'todoId': todo.id});
                           },
                           subtitle: Text(todo.createdAt.toIso8601String()),
                         ),

@@ -16,6 +16,12 @@ class TasksService {
     controller.add(data);
   }
 
+  Future<Todo?> getTodoById(String id) async {
+    final data = await tasksCache.readTodos();
+    var todo = data.where((element) => element.id == id).first;
+    return todo;
+  }
+
   Future addData(Todo todo) async {
     await tasksCache.saveTodo(todo);
     readData();
