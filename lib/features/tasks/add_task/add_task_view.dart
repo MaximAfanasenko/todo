@@ -36,16 +36,16 @@ class _AddTaskViewState extends State<AddTaskView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AddTaskBloc>(
-      create: (_) => AddTaskBloc(inject(), widget.todoId),
+      create: (_) =>
+          AddTaskBloc(inject(), widget.todoId)..add(AddTaskEvent.loadData()),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
-        buildWhen: (previous, current) =>
-            current == AddTaskState.fillingFields() ||
-            current == AddTaskState.loading(),
+        buildWhen: (previous, current) => true,
         listener: (context, state) {
           state.when(
             loading: () => {},
-            fillingFields: () => {},
+            creating: () => {},
+            editing: (t) => {},
             completed: () => {
               Navigator.pop(context),
             },
@@ -55,79 +55,84 @@ class _AddTaskViewState extends State<AddTaskView> {
           return state.when(
             completed: () => const SizedBox(),
             loading: () => const Center(child: CircularProgressIndicator()),
-            fillingFields: () {
-              return Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: LocaleKeys.title.tr(),
-                      ),
-                      maxLines: 1,
-                      controller: titleController,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: LocaleKeys.description.tr(),
-                      ),
-                      maxLines: 5,
-                      controller: textController,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          var datePickingResult = await showDatePicker(
-                            context: context,
-                            firstDate: DateTime.now().subtract(
-                              const Duration(days: 30),
-                            ),
-                            lastDate:
-                                DateTime.now().add(const Duration(days: 60)),
-                          );
-
-                          if (datePickingResult == null) {
-                            return;
-                          }
-
-                          if (!context.mounted) return;
-
-                          context.read<AddTaskBloc>().add(
-                                AddTaskEvent.setDateTime(
-                                  datePickingResult,
-                                ),
-                              );
-                        },
-                        child: Text(
-                          LocaleKeys.chooseDate.tr(),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          if (!context.mounted) return;
-
-                          context.read<AddTaskBloc>().add(
-                                AddTaskEvent.saveTodo(
-                                  titleController.text,
-                                  textController.text,
-                                ),
-                              );
-                        },
-                        child: Text(
-                          LocaleKeys.createTask.tr(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
+            editing: (todo) {
+              titleController.text = todo.name;
+              textController.text = todo.description;
+              return createScreen();},
+            creating: () {return  createScreen();},
           );
         },
+      ),
+    );
+  }
+
+  Widget createScreen() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: LocaleKeys.title.tr(),
+            ),
+            maxLines: 1,
+            controller: titleController,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              hintText: LocaleKeys.description.tr(),
+            ),
+            maxLines: 5,
+            controller: textController,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: ElevatedButton(
+              onPressed: () async {
+                var datePickingResult = await showDatePicker(
+                  context: context,
+                  firstDate: DateTime.now().subtract(
+                    const Duration(days: 30),
+                  ),
+                  lastDate: DateTime.now().add(const Duration(days: 60)),
+                );
+
+                if (datePickingResult == null) {
+                  return;
+                }
+
+                if (!context.mounted) return;
+
+                context.read<AddTaskBloc>().add(
+                      AddTaskEvent.setDateTime(
+                        datePickingResult,
+                      ),
+                    );
+              },
+              child: Text(
+                LocaleKeys.chooseDate.tr(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: ElevatedButton(
+              onPressed: () async {
+                if (!context.mounted) return;
+
+                context.read<AddTaskBloc>().add(
+                      AddTaskEvent.saveTodo(
+                        titleController.text,
+                        textController.text,
+                      ),
+                    );
+              },
+              child: Text(
+                LocaleKeys.createTask.tr(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

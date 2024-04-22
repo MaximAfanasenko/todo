@@ -341,21 +341,21 @@ mixin _$TasksEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadEvent value) loadData,
+    required TResult Function(_LoadDataEvent value) loadData,
     required TResult Function(_SetData value) setData,
     required TResult Function(_DeleteTodo value) deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadEvent value)? loadData,
+    TResult? Function(_LoadDataEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
     TResult? Function(_DeleteTodo value)? deleteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadEvent value)? loadData,
+    TResult Function(_LoadDataEvent value)? loadData,
     TResult Function(_SetData value)? setData,
     TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
@@ -382,25 +382,25 @@ class _$TasksEventCopyWithImpl<$Res, $Val extends TasksEvent>
 }
 
 /// @nodoc
-abstract class _$$LoadEventImplCopyWith<$Res> {
-  factory _$$LoadEventImplCopyWith(
-          _$LoadEventImpl value, $Res Function(_$LoadEventImpl) then) =
-      __$$LoadEventImplCopyWithImpl<$Res>;
+abstract class _$$LoadDataEventImplCopyWith<$Res> {
+  factory _$$LoadDataEventImplCopyWith(
+          _$LoadDataEventImpl value, $Res Function(_$LoadDataEventImpl) then) =
+      __$$LoadDataEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadEventImplCopyWithImpl<$Res>
-    extends _$TasksEventCopyWithImpl<$Res, _$LoadEventImpl>
-    implements _$$LoadEventImplCopyWith<$Res> {
-  __$$LoadEventImplCopyWithImpl(
-      _$LoadEventImpl _value, $Res Function(_$LoadEventImpl) _then)
+class __$$LoadDataEventImplCopyWithImpl<$Res>
+    extends _$TasksEventCopyWithImpl<$Res, _$LoadDataEventImpl>
+    implements _$$LoadDataEventImplCopyWith<$Res> {
+  __$$LoadDataEventImplCopyWithImpl(
+      _$LoadDataEventImpl _value, $Res Function(_$LoadDataEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadEventImpl implements _LoadEvent {
-  _$LoadEventImpl();
+class _$LoadDataEventImpl implements _LoadDataEvent {
+  _$LoadDataEventImpl();
 
   @override
   String toString() {
@@ -410,7 +410,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadEventImpl);
+        (other.runtimeType == runtimeType && other is _$LoadDataEventImpl);
   }
 
   @override
@@ -453,7 +453,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadEvent value) loadData,
+    required TResult Function(_LoadDataEvent value) loadData,
     required TResult Function(_SetData value) setData,
     required TResult Function(_DeleteTodo value) deleteTodo,
   }) {
@@ -463,7 +463,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadEvent value)? loadData,
+    TResult? Function(_LoadDataEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
     TResult? Function(_DeleteTodo value)? deleteTodo,
   }) {
@@ -473,7 +473,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadEvent value)? loadData,
+    TResult Function(_LoadDataEvent value)? loadData,
     TResult Function(_SetData value)? setData,
     TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
@@ -485,8 +485,8 @@ class _$LoadEventImpl implements _LoadEvent {
   }
 }
 
-abstract class _LoadEvent implements TasksEvent {
-  factory _LoadEvent() = _$LoadEventImpl;
+abstract class _LoadDataEvent implements TasksEvent {
+  factory _LoadDataEvent() = _$LoadDataEventImpl;
 }
 
 /// @nodoc
@@ -593,7 +593,7 @@ class _$SetDataImpl implements _SetData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadEvent value) loadData,
+    required TResult Function(_LoadDataEvent value) loadData,
     required TResult Function(_SetData value) setData,
     required TResult Function(_DeleteTodo value) deleteTodo,
   }) {
@@ -603,7 +603,7 @@ class _$SetDataImpl implements _SetData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadEvent value)? loadData,
+    TResult? Function(_LoadDataEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
     TResult? Function(_DeleteTodo value)? deleteTodo,
   }) {
@@ -613,7 +613,7 @@ class _$SetDataImpl implements _SetData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadEvent value)? loadData,
+    TResult Function(_LoadDataEvent value)? loadData,
     TResult Function(_SetData value)? setData,
     TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),
@@ -732,7 +732,7 @@ class _$DeleteTodoImpl implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadEvent value) loadData,
+    required TResult Function(_LoadDataEvent value) loadData,
     required TResult Function(_SetData value) setData,
     required TResult Function(_DeleteTodo value) deleteTodo,
   }) {
@@ -742,7 +742,7 @@ class _$DeleteTodoImpl implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadEvent value)? loadData,
+    TResult? Function(_LoadDataEvent value)? loadData,
     TResult? Function(_SetData value)? setData,
     TResult? Function(_DeleteTodo value)? deleteTodo,
   }) {
@@ -752,7 +752,7 @@ class _$DeleteTodoImpl implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadEvent value)? loadData,
+    TResult Function(_LoadDataEvent value)? loadData,
     TResult Function(_SetData value)? setData,
     TResult Function(_DeleteTodo value)? deleteTodo,
     required TResult orElse(),

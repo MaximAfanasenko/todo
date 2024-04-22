@@ -18,7 +18,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   }
 
   bind() {
-    on<_LoadEvent>((_, emit) async {
+    on<_LoadDataEvent>((_, emit) async {
       service.readData();
     });
 

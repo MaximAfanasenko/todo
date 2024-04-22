@@ -12,39 +12,45 @@ part 'add_task_bloc.freezed.dart';
 
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   AddTaskBloc(this.tasksService, this.todoId)
-      : super(AddTaskState.fillingFields()) {
+      : super(AddTaskState.loading()) {
 
-    sub = tasksService.controller.stream
-        .listen((todos) => add(AddTaskEvent.loading()));
+    // sub = tasksService.controller.stream
+    //     .listen((todos) => add(AddTaskEvent.loading()));
 
     bind();
   }
 
-  bind() {
-    on<_LoadingEvent>((_, emit) {
-      emit(AddTaskState.loading());
-    });
+  bind() {     
+    on<_LoadDataEvent>((event, emit) async {
+      var cachedTodo = await tasksService.getTodoById(todoId ?? '');
 
-    on<_FillingFieldsEvent>((event, emit) {});
+      if (cachedTodo == null) {
+        emit(AddTaskState.creating());
+      } else {
+        emit(AddTaskState.editing(cachedTodo));
+      }            
+    });  
 
     on<_SetDateTimeEvent>((event, emit) {
       selectedDateTime = event.dateTime;
     });
 
-    on<_SaveTodoEvent>((event, emit) {
+    on<_SaveTodoEvent>((event, emit) async {
       if (selectedDateTime == null) {
         return;
       }
 
-      if (todo != null) {
+      var cachedTodo = await tasksService.getTodoById(todoId ?? '');
+
+      if (cachedTodo != null) {
         var todo = Todo(
-          id: this.todo!.id,
+          id: cachedTodo.id,
           name: event.title,
           description: event.description,
           createdAt: selectedDateTime!,
         );
 
-        tasksService.updateData(todo);
+        await tasksService.updateData(todo);
       } else {
         var todo = Todo(
           id: const Uuid().v4(),
@@ -53,7 +59,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
           createdAt: selectedDateTime!,
         );
 
-        tasksService.addData(todo);
+        await tasksService.addData(todo);
       }
 
       emit(AddTaskState.completed());

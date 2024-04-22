@@ -18,7 +18,7 @@ class TasksService {
 
   Future<Todo?> getTodoById(String id) async {
     final data = await tasksCache.readTodos();
-    var todo = data.where((element) => element.id == id).first;
+    var todo = data.where((element) => element.id == id).firstOrNull;
     return todo;
   }
 
