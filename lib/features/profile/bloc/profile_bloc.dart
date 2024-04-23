@@ -13,65 +13,59 @@ part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this.profileService) : super(ProfileState.loading()) {
-    
     bind();
   }
 
   bind() {
     on<_LoadEvent>((event, emit) async {
-      
-
       var profile = await profileService.readProfile();
 
       if (profile == null) {
         return;
       }
 
-      name = profile.name;
-      surname = profile.surname;
-      profileImagePath = profile.profileImagePath;
+      _name = profile.name;
+      _surname = profile.surname;
+      _profileImagePath = profile.profileImagePath;
 
-      emit(ProfileState.editting(name, surname, profileImagePath));
+      emit(ProfileState.editting(_name, _surname, _profileImagePath));
     });
 
     on<_SetImageEvent>((event, emit) async {
-      
-
       var image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) {
         return;
       }
 
-      profileImagePath = image.path;
+      _profileImagePath = image.path;
 
       var profile = Profile(
-        name: name,
-        surname: surname,
-        profileImagePath: profileImagePath,
+        name: _name,
+        surname: _surname,
+        profileImagePath: _profileImagePath,
       );
 
       await profileService.saveProfile(profile);
 
-      emit(ProfileState.editting(name, surname, profileImagePath));
+      emit(ProfileState.editting(_name, _surname, _profileImagePath));
     });
 
-    on<_SaveEvent>((event, emit) async {     
-
+    on<_SaveEvent>((event, emit) async {
       var profile = Profile(
         name: event.name,
         surname: event.surname,
-        profileImagePath: profileImagePath,
+        profileImagePath: _profileImagePath,
       );
 
       await profileService.saveProfile(profile);
 
-      emit(ProfileState.editting(name, surname, profileImagePath));
+      emit(ProfileState.editting(_name, _surname, _profileImagePath));
     });
   }
 
   final ProfileService profileService;
 
-  String name = 'Имя';
-  String surname = 'Фамилия';
-  String profileImagePath = '';
+  String _name = 'Имя';
+  String _surname = 'Фамилия';
+  String _profileImagePath = '';
 }
