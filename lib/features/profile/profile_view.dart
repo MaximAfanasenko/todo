@@ -36,7 +36,7 @@ class _ProfileViewState extends State<ProfileView> {
         builder: (context, state) {
           return state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            defaultState: () {
+            editting: (name, surname, imagePath) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
@@ -52,7 +52,7 @@ class _ProfileViewState extends State<ProfileView> {
                           fit: BoxFit.cover,
                           height: 300,
                           width: 300,
-                          context.read<ProfileBloc>().profileImage,
+                          File(imagePath),
                           color: Colors.lightGreen,
                           colorBlendMode: BlendMode.difference,
                           filterQuality: FilterQuality.high,
@@ -78,7 +78,7 @@ class _ProfileViewState extends State<ProfileView> {
                       TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          hintText: context.read<ProfileBloc>().name,
+                          hintText: name,
                         ),
                       ),
                       const SizedBox(
@@ -87,7 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
                       TextField(
                         controller: surnameController,
                         decoration: InputDecoration(
-                          hintText: context.read<ProfileBloc>().surname,
+                          hintText: surname,
                         ),
                       ),
                       const SizedBox(
@@ -101,9 +101,6 @@ class _ProfileViewState extends State<ProfileView> {
                                   ProfileEvent.save(
                                     nameController.text,
                                     surnameController.text,
-                                    context
-                                        .read<ProfileBloc>()
-                                        .profileImagePath,
                                   ),
                                 ),
                           },

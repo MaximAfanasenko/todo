@@ -19,7 +19,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   bind() {
     on<_LoadEvent>((event, emit) async {
-      emit(ProfileState.loading());
+      
 
       var profile = await profileService.readProfile();
 
@@ -27,15 +27,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         return;
       }
 
-      name = 'Имя: ${profile.name}';
-      surname = 'Фамилия: ${profile.surname}';
+      name = profile.name;
+      surname = profile.surname;
       profileImagePath = profile.profileImagePath;
 
-      emit(ProfileState.defaultState());
+      emit(ProfileState.editting(name, surname, profileImagePath));
     });
 
     on<_SetImageEvent>((event, emit) async {
-      emit(ProfileState.loading());
+      
 
       var image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) {
@@ -44,21 +44,28 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       profileImagePath = image.path;
 
-      emit(ProfileState.defaultState());
-    });
-
-    on<_SaveEvent>((event, emit) async {
-      emit(ProfileState.loading());
-
       var profile = Profile(
-        name: event.name,
-        surname: event.surname,
-        profileImagePath: event.imagePath,
+        name: name,
+        surname: surname,
+        profileImagePath: profileImagePath,
       );
 
       await profileService.saveProfile(profile);
 
-      emit(ProfileState.defaultState());
+      emit(ProfileState.editting(name, surname, profileImagePath));
+    });
+
+    on<_SaveEvent>((event, emit) async {     
+
+      var profile = Profile(
+        name: event.name,
+        surname: event.surname,
+        profileImagePath: profileImagePath,
+      );
+
+      await profileService.saveProfile(profile);
+
+      emit(ProfileState.editting(name, surname, profileImagePath));
     });
   }
 
@@ -67,6 +74,4 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   String name = 'Имя';
   String surname = 'Фамилия';
   String profileImagePath = '';
-
-  File get profileImage => File(profileImagePath);
 }
