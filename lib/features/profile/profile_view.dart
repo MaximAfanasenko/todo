@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/profile/bloc/profile_bloc.dart';
+import 'package:todo/features/profile/language_bottom_sheet.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
@@ -47,16 +48,18 @@ class _ProfileViewState extends State<ProfileView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      ClipOval(
-                        child: Image.file(
-                          fit: BoxFit.cover,
-                          height: 300,
-                          width: 300,
-                          File(imagePath),
-                          color: Colors.lightGreen,
-                          colorBlendMode: BlendMode.difference,
-                          filterQuality: FilterQuality.high,
-                        ),
+                      ClipOval(                    
+                        child: imagePath.isEmpty
+                            ? const Icon(Icons.camera)
+                            : Image.file(
+                                fit: BoxFit.cover,
+                                height: 300,
+                                width: 300,
+                                File(imagePath),
+                                color: Colors.lightGreen,
+                                colorBlendMode: BlendMode.difference,
+                                filterQuality: FilterQuality.high,
+                              ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -121,51 +124,8 @@ class _ProfileViewState extends State<ProfileView> {
                         height: 56,
                         child: ElevatedButton(
                           child: Text(LocaleKeys.chooseLanguage.tr()),
-                          onPressed: () => {
-                            showModalBottomSheet<void>(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(40),
-                                    ),
-                                  ),
-                                  height: 200,
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Text(LocaleKeys.chooseLanguage.tr()),
-                                        ElevatedButton(
-                                          child: Text(LocaleKeys.english.tr()),
-                                          onPressed: () {
-                                            context.setLocale(
-                                              const Locale('en', 'EN'),
-                                            );
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        ElevatedButton(
-                                          child: Text(LocaleKeys.russian.tr()),
-                                          onPressed: () {
-                                            context.setLocale(
-                                              const Locale('ru', 'RU'),
-                                            );
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          },
+                          onPressed: () =>
+                              showModalLanguageBottomSheet(context),
                         ),
                       ),
                       const SizedBox(
