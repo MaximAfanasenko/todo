@@ -18,15 +18,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   bind() {
     on<_LoadEvent>((event, emit) async {
-      var profile = await profileService.readProfile();
+      var profile = await profileService.readProfile();      
 
-      if (profile == null) {
-        return;
-      }
-
-      _name = profile.name;
-      _surname = profile.surname;
-      _profileImagePath = profile.profileImagePath;
+      _name = profile?.name ?? '';
+      _surname = profile?.surname ?? ''; 
+      _profileImagePath = profile?.profileImagePath ?? '';
 
       emit(ProfileState.editting(_name, _surname, _profileImagePath));
     });

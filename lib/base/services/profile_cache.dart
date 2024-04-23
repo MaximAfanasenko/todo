@@ -25,6 +25,11 @@ class ProfileCache {
 
   Future<Profile?> readProfile() async {
     var profileDynamic = await cache.getValue(ProfileCacheKey);
+
+    if (profileDynamic == null) {
+      return null;
+    }
+
     var profileJson = jsonDecode(profileDynamic);
     
 
