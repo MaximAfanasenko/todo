@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -19,8 +18,8 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController surnameController = TextEditingController();
+  final nameController = TextEditingController();
+  final surnameController = TextEditingController();
 
   @override
   void dispose() {
@@ -37,108 +36,110 @@ class _ProfileViewState extends State<ProfileView> {
         builder: (context, state) {
           return state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            editting: (name, surname, imageBytes) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ClipOval(                    
-                        child: imageBytes.isEmpty
-                            ? const Icon(Icons.camera)
-                            : Image.memory(
-                                fit: BoxFit.cover,
-                                height: 300,
-                                width: 300,
-                                imageBytes,
-                                color: Colors.lightGreen,
-                                colorBlendMode: BlendMode.difference,
-                                filterQuality: FilterQuality.high,
-                              ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: () => {
-                            context
-                                .read<ProfileBloc>()
-                                .add(ProfileEvent.setImage()),
-                          },
-                          child: Text(LocaleKeys.chooseProfilePhoto.tr()),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          hintText: name,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextField(
-                        controller: surnameController,
-                        decoration: InputDecoration(
-                          hintText: surname,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: () => {
-                            context.read<ProfileBloc>().add(
-                                  ProfileEvent.save(
-                                    nameController.text,
-                                    surnameController.text,
-                                  ),
-                                ),
-                          },
-                          child: Text(LocaleKeys.save.tr()),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        LocaleKeys.chooseLanguage.tr(),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 56,
-                        child: ElevatedButton(
-                          child: Text(LocaleKeys.chooseLanguage.tr()),
-                          onPressed: () =>
-                              showModalLanguageBottomSheet(context),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                    ],
-                  ),
-                ),
-              );
+            display: (name, surname, imageBytes) =>
+                buildProfileView(context, imageBytes),
+          );
+        },
+        listener: (context, state) {
+          state.when(
+            loading: () {},
+            display: (name, surname, imageBytes) {
+              nameController.text = name;
+              surnameController.text = surname;
             },
           );
         },
-        listener: (context, state) => {},
+      ),
+    );
+  }
+
+  Widget buildProfileView(BuildContext context, Uint8List imageBytes) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 20, left: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            ClipOval(
+              child: imageBytes.isEmpty
+                  ? const Icon(Icons.camera)
+                  : Image.memory(
+                      fit: BoxFit.cover,
+                      height: 300,
+                      width: 300,
+                      imageBytes,
+                      color: Colors.lightGreen,
+                      colorBlendMode: BlendMode.difference,
+                      filterQuality: FilterQuality.high,
+                    ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 56,
+              child: ElevatedButton(
+                onPressed: () => {
+                  context.read<ProfileBloc>().add(ProfileEvent.setImage()),
+                },
+                child: Text(LocaleKeys.chooseProfilePhoto.tr()),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: nameController,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: surnameController,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 56,
+              child: ElevatedButton(
+                onPressed: () => {
+                  context.read<ProfileBloc>().add(
+                        ProfileEvent.save(
+                          nameController.text,
+                          surnameController.text,
+                        ),
+                      ),
+                },
+                child: Text(LocaleKeys.save.tr()),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              LocaleKeys.chooseLanguage.tr(),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 56,
+              child: ElevatedButton(
+                child: Text(LocaleKeys.chooseLanguage.tr()),
+                onPressed: () => showModalLanguageBottomSheet(context),
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+          ],
+        ),
       ),
     );
   }

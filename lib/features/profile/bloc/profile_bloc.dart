@@ -25,7 +25,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _surname = profile?.surname ?? ''; 
       _imageBytesInBase64 = profile?.imageBytesInBase64 ?? '';
 
-      emit(ProfileState.editting(_name, _surname, _imageBytes));
+      emit(ProfileState.display(_name, _surname, _imageBytes));
     });
 
     on<_SetImageEvent>((event, emit) async {
@@ -46,7 +46,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       await _profileService.saveProfile(profile);
 
-      emit(ProfileState.editting(_name, _surname, _imageBytes));
+      emit(ProfileState.display(_name, _surname, _imageBytes));
     });
 
     on<_SaveEvent>((event, emit) async {
@@ -58,7 +58,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       await _profileService.saveProfile(profile);
 
-      emit(ProfileState.editting(_name, _surname, _imageBytes));
+      emit(ProfileState.display(_name, _surname, _imageBytes));
     });
   }
 

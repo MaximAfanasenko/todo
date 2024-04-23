@@ -20,40 +20,40 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String name, String surname, Uint8List imageBytes)
-        editting,
+        display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DefaultState value) editting,
+    required TResult Function(_DisplayState value) display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DefaultState value)? editting,
+    TResult? Function(_DisplayState value)? display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_DefaultState value)? editting,
+    TResult Function(_DisplayState value)? display,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,7 +117,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String name, String surname, Uint8List imageBytes)
-        editting,
+        display,
   }) {
     return loading();
   }
@@ -127,7 +127,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
   }) {
     return loading?.call();
   }
@@ -137,7 +137,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -150,7 +150,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DefaultState value) editting,
+    required TResult Function(_DisplayState value) display,
   }) {
     return loading(this);
   }
@@ -159,7 +159,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DefaultState value)? editting,
+    TResult? Function(_DisplayState value)? display,
   }) {
     return loading?.call(this);
   }
@@ -168,7 +168,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_DefaultState value)? editting,
+    TResult Function(_DisplayState value)? display,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -183,20 +183,20 @@ abstract class _LoadingState implements ProfileState {
 }
 
 /// @nodoc
-abstract class _$$DefaultStateImplCopyWith<$Res> {
-  factory _$$DefaultStateImplCopyWith(
-          _$DefaultStateImpl value, $Res Function(_$DefaultStateImpl) then) =
-      __$$DefaultStateImplCopyWithImpl<$Res>;
+abstract class _$$DisplayStateImplCopyWith<$Res> {
+  factory _$$DisplayStateImplCopyWith(
+          _$DisplayStateImpl value, $Res Function(_$DisplayStateImpl) then) =
+      __$$DisplayStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name, String surname, Uint8List imageBytes});
 }
 
 /// @nodoc
-class __$$DefaultStateImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$DefaultStateImpl>
-    implements _$$DefaultStateImplCopyWith<$Res> {
-  __$$DefaultStateImplCopyWithImpl(
-      _$DefaultStateImpl _value, $Res Function(_$DefaultStateImpl) _then)
+class __$$DisplayStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$DisplayStateImpl>
+    implements _$$DisplayStateImplCopyWith<$Res> {
+  __$$DisplayStateImplCopyWithImpl(
+      _$DisplayStateImpl _value, $Res Function(_$DisplayStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -206,7 +206,7 @@ class __$$DefaultStateImplCopyWithImpl<$Res>
     Object? surname = null,
     Object? imageBytes = null,
   }) {
-    return _then(_$DefaultStateImpl(
+    return _then(_$DisplayStateImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -225,8 +225,8 @@ class __$$DefaultStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DefaultStateImpl implements _DefaultState {
-  _$DefaultStateImpl(this.name, this.surname, this.imageBytes);
+class _$DisplayStateImpl implements _DisplayState {
+  _$DisplayStateImpl(this.name, this.surname, this.imageBytes);
 
   @override
   final String name;
@@ -237,14 +237,14 @@ class _$DefaultStateImpl implements _DefaultState {
 
   @override
   String toString() {
-    return 'ProfileState.editting(name: $name, surname: $surname, imageBytes: $imageBytes)';
+    return 'ProfileState.display(name: $name, surname: $surname, imageBytes: $imageBytes)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DefaultStateImpl &&
+            other is _$DisplayStateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.surname, surname) || other.surname == surname) &&
             const DeepCollectionEquality()
@@ -258,17 +258,17 @@ class _$DefaultStateImpl implements _DefaultState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DefaultStateImplCopyWith<_$DefaultStateImpl> get copyWith =>
-      __$$DefaultStateImplCopyWithImpl<_$DefaultStateImpl>(this, _$identity);
+  _$$DisplayStateImplCopyWith<_$DisplayStateImpl> get copyWith =>
+      __$$DisplayStateImplCopyWithImpl<_$DisplayStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String name, String surname, Uint8List imageBytes)
-        editting,
+        display,
   }) {
-    return editting(name, surname, imageBytes);
+    return display(name, surname, imageBytes);
   }
 
   @override
@@ -276,9 +276,9 @@ class _$DefaultStateImpl implements _DefaultState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
   }) {
-    return editting?.call(name, surname, imageBytes);
+    return display?.call(name, surname, imageBytes);
   }
 
   @override
@@ -286,11 +286,11 @@ class _$DefaultStateImpl implements _DefaultState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String name, String surname, Uint8List imageBytes)?
-        editting,
+        display,
     required TResult orElse(),
   }) {
-    if (editting != null) {
-      return editting(name, surname, imageBytes);
+    if (display != null) {
+      return display(name, surname, imageBytes);
     }
     return orElse();
   }
@@ -299,44 +299,44 @@ class _$DefaultStateImpl implements _DefaultState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DefaultState value) editting,
+    required TResult Function(_DisplayState value) display,
   }) {
-    return editting(this);
+    return display(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DefaultState value)? editting,
+    TResult? Function(_DisplayState value)? display,
   }) {
-    return editting?.call(this);
+    return display?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_DefaultState value)? editting,
+    TResult Function(_DisplayState value)? display,
     required TResult orElse(),
   }) {
-    if (editting != null) {
-      return editting(this);
+    if (display != null) {
+      return display(this);
     }
     return orElse();
   }
 }
 
-abstract class _DefaultState implements ProfileState {
-  factory _DefaultState(
+abstract class _DisplayState implements ProfileState {
+  factory _DisplayState(
           final String name, final String surname, final Uint8List imageBytes) =
-      _$DefaultStateImpl;
+      _$DisplayStateImpl;
 
   String get name;
   String get surname;
   Uint8List get imageBytes;
   @JsonKey(ignore: true)
-  _$$DefaultStateImplCopyWith<_$DefaultStateImpl> get copyWith =>
+  _$$DisplayStateImplCopyWith<_$DisplayStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
