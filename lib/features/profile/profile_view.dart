@@ -32,12 +32,12 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>(
-      create: (_) => ProfileBloc(inject())..add(ProfileEvent.load()),
+      create: (_) => ProfileBloc(inject(), inject())..add(ProfileEvent.load()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         builder: (context, state) {
           return state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            editting: (name, surname, imagePath) {
+            editting: (name, surname, imageBytes) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
@@ -49,13 +49,13 @@ class _ProfileViewState extends State<ProfileView> {
                         height: 20,
                       ),
                       ClipOval(                    
-                        child: imagePath.isEmpty
+                        child: imageBytes.isEmpty
                             ? const Icon(Icons.camera)
-                            : Image.file(
+                            : Image.memory(
                                 fit: BoxFit.cover,
                                 height: 300,
                                 width: 300,
-                                File(imagePath),
+                                imageBytes,
                                 color: Colors.lightGreen,
                                 colorBlendMode: BlendMode.difference,
                                 filterQuality: FilterQuality.high,

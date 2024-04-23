@@ -7,12 +7,12 @@ part 'profile.g.dart';
 class Profile {
   final String name;
   final String surname;
-  final String profileImagePath;
+  final String imageBytesInBase64;
 
   Profile({
     required this.name,
     required this.surname,
-    required this.profileImagePath,
+    required this.imageBytesInBase64,
   });
 
   /// Connect the generated [_$ProfileFromJson] function to the `fromJson`

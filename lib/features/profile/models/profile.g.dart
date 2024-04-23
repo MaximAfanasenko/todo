@@ -9,11 +9,11 @@ part of 'profile.dart';
 Profile _$ProfileFromJson(Map<String, dynamic> json) => Profile(
       name: json['name'] as String,
       surname: json['surname'] as String,
-      profileImagePath: json['profileImagePath'] as String,
+      imageBytesInBase64: json['imageBytesInBase64'] as String,
     );
 
 Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
       'name': instance.name,
       'surname': instance.surname,
-      'profileImagePath': instance.profileImagePath,
+      'imageBytesInBase64': instance.imageBytesInBase64,
     };
