@@ -14,12 +14,6 @@ class ProfileCache {
   ProfileCache({required this.cache});
 
   Future saveProfile(Profile profile) async {
-    // var profile = await readProfile();
-
-    // if (profile == null) {
-
-    // }
-
     await cache.setValue(ProfileCacheKey, profile);
   }
 
