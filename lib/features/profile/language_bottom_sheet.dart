@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
-showModalLanguageBottomSheet(BuildContext context) {
+void showModalLanguageBottomSheet(BuildContext context) {
   showModalBottomSheet<void>(
     context: context,
     builder: (BuildContext context) {

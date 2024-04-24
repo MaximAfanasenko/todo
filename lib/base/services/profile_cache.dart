@@ -3,36 +3,29 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:todo/base/cache/cache.dart';
 
-import '../../features/profile/models/profile.dart';
+import 'package:todo/features/profile/models/profile.dart';
 
 @singleton
 class ProfileCache {
-  static const String ProfileCacheKey = "ProfileCacheKey";
+  ProfileCache({required this.cache});
+
+  static const String profileCacheKey = 'ProfileCacheKey';
 
   final Cache cache;
 
-  ProfileCache({required this.cache});
-
-  Future saveProfile(Profile profile) async {
-    await cache.setValue(ProfileCacheKey, profile);
+  Future<void> saveProfile(Profile profile) async {
+    await cache.setValue(profileCacheKey, profile);
   }
 
   Future<Profile?> readProfile() async {
-    var profileDynamic = await cache.getValue(ProfileCacheKey);
+    final profileDynamic = await cache.getString(profileCacheKey);
 
     if (profileDynamic == null) {
       return null;
     }
 
-    var profileJson = jsonDecode(profileDynamic);
-    
-
-    if (profileDynamic != null) {
-      var profile = Profile.fromJson(profileJson);
-      return profile;
-
-    } else {
-      return null;
-    }
+    final profileJson = jsonDecode(profileDynamic) as Map<String, dynamic>;
+    final profile = Profile.fromJson(profileJson);
+    return profile;
   }
 }

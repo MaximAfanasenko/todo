@@ -13,7 +13,8 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en', 'EN'), Locale('ru', 'RU')],
-      path: 'assets/translations', // <-- change the path of the translation files
+      path:
+          'assets/translations', // <-- change the path of the translation files
       fallbackLocale: const Locale('ru', 'RU'),
       child: const MyApp(),
     ),

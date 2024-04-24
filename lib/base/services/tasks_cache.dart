@@ -6,40 +6,37 @@ import 'package:todo/features/tasks/models/todo.dart';
 
 @singleton
 class TasksCache {
-  static const String TasksCacheKey = "TasksCacheKey";
+  TasksCache({required this.cache});
+
+  static const String tasksCacheKey = 'TasksCacheKey';
 
   final Cache cache;
 
-  TasksCache({required this.cache});
-
-  Future saveTodo(Todo todo) async {
-    var todos = await readTodos();
+  Future<void> saveTodo(Todo todo) async {
+    final todos = await readTodos();
     todos.add(todo);
-    await cache.setValue(TasksCacheKey, todos);
+    await cache.setValue(tasksCacheKey, todos);
   }
 
-  Future updateTodo(Todo todo) async {
-    var todos = await readTodos();
-
-    var index = todos.indexWhere((element) => element.id == todo.id);
-    todos.removeAt(index);
-    todos.insert(index, todo);
-
-    await cache.setValue(TasksCacheKey, todos);
+  Future<void> updateTodo(Todo todo) async {
+    final todos = await readTodos();
+    final index = todos.indexWhere((element) => element.id == todo.id);
+    todos..removeAt(index)..insert(index, todo);
+    await cache.setValue(tasksCacheKey, todos);
   }
 
-  Future deleteTodo(Todo todo) async {
-    var todos = await readTodos();
+  Future<void> deleteTodo(Todo todo) async {
+    final todos = await readTodos();
     todos.remove(todo);
-    await cache.setValue(TasksCacheKey, todos);
+    await cache.setValue(tasksCacheKey, todos);
   }
 
   Future<List<Todo>> readTodos() async {
-    var todosJson = await cache.getValue(TasksCacheKey);
+    final todosJson = await cache.getString(tasksCacheKey);
 
     if (todosJson != null) {
-      List<dynamic> todosList = jsonDecode(todosJson);
-      List<Todo> todos = todosList.map((item) {
+      final todosList = jsonDecode(todosJson) as List<Map<String, dynamic>>;
+      final todos = todosList.map((item) {
         return Todo.fromJson(item);
       }).toList();
       return todos;

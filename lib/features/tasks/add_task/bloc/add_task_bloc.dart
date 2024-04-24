@@ -2,31 +2,29 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/base/services/tasks_service.dart';
+import 'package:todo/features/tasks/models/todo.dart';
 import 'package:uuid/uuid.dart';
 
-part 'add_task_state.dart';
-part 'add_task_event.dart';
 part 'add_task_bloc.freezed.dart';
+part 'add_task_event.dart';
+part 'add_task_state.dart';
 
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
-  AddTaskBloc(this.tasksService, this.todoId)
-      : super(AddTaskState.loading()) {    
-
-    bind();
+  AddTaskBloc(this.tasksService, this.todoId) : super(AddTaskState.loading()) {
+    _bind();
   }
 
-  bind() {     
+  void _bind() {
     on<_LoadDataEvent>((event, emit) async {
-      var cachedTodo = await tasksService.getTodoById(todoId ?? '');
+      final cachedTodo = await tasksService.getTodoById(todoId ?? '');
 
       if (cachedTodo == null) {
         emit(AddTaskState.creating());
       } else {
         emit(AddTaskState.editing(cachedTodo));
-      }            
-    });  
+      }
+    });
 
     on<_SetDateTimeEvent>((event, emit) {
       selectedDateTime = event.dateTime;
@@ -37,10 +35,10 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
         return;
       }
 
-      var cachedTodo = await tasksService.getTodoById(todoId ?? '');
+      final cachedTodo = await tasksService.getTodoById(todoId ?? '');
 
       if (cachedTodo != null) {
-        var todo = Todo(
+        final todo = Todo(
           id: cachedTodo.id,
           name: event.title,
           description: event.description,
@@ -49,7 +47,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
 
         await tasksService.updateData(todo);
       } else {
-        var todo = Todo(
+        final todo = Todo(
           id: const Uuid().v4(),
           name: event.title,
           description: event.description,

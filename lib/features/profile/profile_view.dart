@@ -1,7 +1,7 @@
 import 'dart:typed_data';
-import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/profile/bloc/profile_bloc.dart';
@@ -9,7 +9,9 @@ import 'package:todo/features/profile/language_bottom_sheet.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
 class ProfileView extends StatefulWidget {
-  static String get routeName => "/profile";
+  const ProfileView({super.key});
+
+  static String get routeName => '/profile';
 
   @override
   State<StatefulWidget> createState() {
@@ -58,8 +60,6 @@ class _ProfileViewState extends State<ProfileView> {
       child: Padding(
         padding: const EdgeInsets.only(right: 20, left: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
               height: 20,

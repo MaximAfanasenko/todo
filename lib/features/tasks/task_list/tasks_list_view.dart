@@ -1,17 +1,15 @@
-import 'dart:convert';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/tasks/task_list/bloc/tasks_bloc.dart';
 import 'package:todo/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class TasksListView extends StatelessWidget {
-  TasksListView({super.key});
+  const TasksListView({super.key});
 
-  static String get routeName => "/tasks";
+  static String get routeName => '/tasks';
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +38,16 @@ class TasksListView extends StatelessWidget {
 
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text("$todo${LocaleKeys.deleted.tr()}"),
+                              content: Text('$todo${LocaleKeys.deleted.tr()}'),
                             ),
                           );
                         },
-                        background: Container(
+                        background: const ColoredBox(
                           color: Colors.red,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              padding: EdgeInsets.symmetric(horizontal: 20),
                               child: Icon(
                                 Icons.delete,
                                 color: Colors.white,
@@ -60,7 +58,10 @@ class TasksListView extends StatelessWidget {
                         child: ListTile(
                           title: Text(todo.name),
                           onTap: () {
-                            context.goNamed('updateTask', pathParameters: {'todoId': todo.id});
+                            context.goNamed(
+                              'updateTask',
+                              pathParameters: {'todoId': todo.id},
+                            );
                           },
                           subtitle: Text(todo.createdAt.toIso8601String()),
                         ),

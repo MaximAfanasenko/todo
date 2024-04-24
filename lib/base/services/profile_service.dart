@@ -1,22 +1,21 @@
 import 'dart:async';
-import 'package:injectable/injectable.dart';
-import 'package:todo/base/services/tasks_cache.dart';
-import 'package:todo/features/profile/models/profile.dart';
 
-import 'profile_cache.dart';
+import 'package:injectable/injectable.dart';
+import 'package:todo/base/services/profile_cache.dart';
+import 'package:todo/features/profile/models/profile.dart';
 
 @singleton
 class ProfileService {
-  final ProfileCache profileCache;
-
   ProfileService({required this.profileCache});
+
+  final ProfileCache profileCache;
 
   Future<Profile?> readProfile() async {
     final data = await profileCache.readProfile();
     return data;
   }
 
-  Future saveProfile(Profile profile) async {
+  Future<void> saveProfile(Profile profile) async {
     await profileCache.saveProfile(profile);
   }
 }

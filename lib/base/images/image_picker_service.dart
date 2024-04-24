@@ -4,6 +4,6 @@ import 'package:injectable/injectable.dart';
 @singleton
 class ImagePickerService {
   Future<XFile?> pickImage() {
-    return ImagePicker().pickImage(source: ImageSource.gallery);      
+    return ImagePicker().pickImage(source: ImageSource.gallery);
   }
 }

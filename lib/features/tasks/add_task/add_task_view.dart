@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/base/di/di.dart';
 import 'package:todo/features/tasks/add_task/bloc/add_task_bloc.dart';
-import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/generated/locale_keys.g.dart';
 
-/// Displays the various settings that can be customized by the user.
-///
-/// When a user changes a setting, the SettingsController is updated and
-/// Widgets that listen to the SettingsController are rebuilt.
 class AddTaskView extends StatefulWidget {
-  AddTaskView({super.key, this.todoId});
+  const AddTaskView({super.key, this.todoId});
 
-  static String get routeName => "/addtask";
+  static String get routeName => '/addtask';
   final String? todoId;
 
   @override
@@ -58,8 +53,9 @@ class _AddTaskViewState extends State<AddTaskView> {
             editing: (todo) {
               titleController.text = todo.name;
               textController.text = todo.description;
-              return createScreen();},
-            creating: () {return  createScreen();},
+              return createScreen();
+            },
+            creating: createScreen,
           );
         },
       ),
@@ -75,7 +71,6 @@ class _AddTaskViewState extends State<AddTaskView> {
             decoration: InputDecoration(
               hintText: LocaleKeys.title.tr(),
             ),
-            maxLines: 1,
             controller: titleController,
           ),
           TextField(
@@ -89,7 +84,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             padding: const EdgeInsets.only(top: 20),
             child: ElevatedButton(
               onPressed: () async {
-                var datePickingResult = await showDatePicker(
+                final datePickingResult = await showDatePicker(
                   context: context,
                   firstDate: DateTime.now().subtract(
                     const Duration(days: 30),

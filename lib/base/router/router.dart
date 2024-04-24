@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/app.dart';
 import 'package:todo/features/profile/profile_view.dart';
 import 'package:todo/features/tasks/add_task/add_task_view.dart';
-import 'package:todo/features/tasks/models/todo.dart';
 import 'package:todo/features/tasks/task_list/tasks_list_view.dart';
+import 'package:todo/navigation.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/tasks',
@@ -19,20 +17,20 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/tasks',
           builder: (BuildContext context, GoRouterState state) {
-            return TasksListView();
+            return const TasksListView();
           },
           routes: [
             GoRoute(
               path: 'addTask',
               builder: (BuildContext context, GoRouterState state) {
-                return AddTaskView();
+                return const AddTaskView();
               },
             ),
             GoRoute(
               name: 'updateTask',
               path: 'updateTask/:todoId',
               builder: (BuildContext context, GoRouterState state) {
-                var todoId = state.pathParameters["todoId"]!;
+                final todoId = state.pathParameters['todoId']!;
                 return AddTaskView(todoId: todoId);
               },
             ),
@@ -41,7 +39,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/profile',
           builder: (BuildContext context, GoRouterState state) {
-            return ProfileView();
+            return const ProfileView();
           },
         ),
       ],

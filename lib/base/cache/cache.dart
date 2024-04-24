@@ -6,12 +6,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 @singleton
 
 class Cache {
-  late SharedPreferences _preferences;
 
   Cache ();
 
+  late SharedPreferences _preferences;
+
   @postConstruct
-  void init() async {
+  Future<void> init() async {
      _preferences = await SharedPreferences.getInstance();
   }
 
@@ -21,6 +22,10 @@ class Cache {
 
   Future<T?> getValue<T>(String key) async {
     return _preferences.get(key) as T?;
+  }
+
+  Future<String?> getString(String key) async {
+    return _preferences.getString(key);
   }
 
   Future<void> setValue<T>(String key, T value) async {  
@@ -36,9 +41,8 @@ class Cache {
     } else if (value is List<String>) {
       await _preferences.setStringList(key, value);
     } else {    
-      var jsonValue = jsonEncode(value);
-      _preferences.setString(key, jsonValue);
-      //throw Exception('Unsupported value type');
+      final jsonValue = jsonEncode(value);
+      await _preferences.setString(key, jsonValue);
     }
   }
 
