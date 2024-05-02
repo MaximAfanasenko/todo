@@ -26,48 +26,51 @@ class TasksListView extends StatelessWidget {
                 );
               }
 
-              return ListView(
-                children: todos
-                    .map(
-                      (todo) => Dismissible(
-                        key: Key(todo.id),
-                        onDismissed: (direction) {
-                          context
-                              .read<TasksBloc>()
-                              .add(TasksEvent.deleteTodo(todo));
+              return CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final todo = todos[index];
+                        return Dismissible(
+                          key: UniqueKey(),
+                          onDismissed: (direction) {
+                            context
+                                .read<TasksBloc>()
+                                .add(TasksEvent.deleteTodo(todo));
 
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('$todo${LocaleKeys.deleted.tr()}'),
-                            ),
-                          );
-                        },
-                        background: const ColoredBox(
-                          color: Colors.red,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Icon(
-                                Icons.delete,
-                                color: Colors.white,
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content:
+                                    Text('$todo${LocaleKeys.deleted.tr()}'),
                               ),
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
-                          title: Text(todo.name),
-                          onTap: () {
-                            context.goNamed(
-                              'updateTask',
-                              pathParameters: {'todoId': todo.id},
                             );
                           },
-                          subtitle: Text(todo.createdAt.toIso8601String()),
-                        ),
-                      ),
-                    )
-                    .toList(),
+                          background: Container(
+                            color: Colors.red,
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                          ),
+                          child: ListTile(
+                            title: Text(todo.name),
+                            onTap: () {
+                              context.goNamed(
+                                'updateTask',
+                                pathParameters: {'todoId': todo.id},
+                              );
+                            },
+                            subtitle: Text(todo.createdAt.toIso8601String()),
+                          ),
+                        );
+                      },
+                      childCount: todos.length,
+                    ),
+                  ),
+                ],
               );
             },
           );

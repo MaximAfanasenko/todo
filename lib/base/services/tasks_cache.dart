@@ -35,7 +35,7 @@ class TasksCache {
     final todosJson = await cache.getString(tasksCacheKey);
 
     if (todosJson != null) {
-      final todosList = jsonDecode(todosJson) as List<Map<String, dynamic>>;
+      final todosList = jsonDecode(todosJson) as List<dynamic>;
       final todos = todosList.map((item) {
         return Todo.fromJson(item);
       }).toList();

@@ -63,13 +63,13 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
 
   DateTime? selectedDateTime;
 
-  late StreamSubscription<void> sub;
+  //late StreamSubscription<void> sub;
   late String? todoId;
   final TasksService tasksService;
 
   @override
   Future<void> close() {
-    sub.cancel();
+    //sub.cancel();
     return super.close();
   }
 }

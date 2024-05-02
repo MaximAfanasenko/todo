@@ -35,7 +35,7 @@ class _AddTaskViewState extends State<AddTaskView> {
           AddTaskBloc(inject(), widget.todoId)..add(AddTaskEvent.loadData()),
       child: BlocConsumer<AddTaskBloc, AddTaskState>(
         listenWhen: (previous, current) => current == AddTaskState.completed(),
-        buildWhen: (previous, current) => true,
+        buildWhen: (previous, current) => current != AddTaskState.completed(),
         listener: (context, state) {
           state.when(
             loading: () => {},
@@ -53,16 +53,16 @@ class _AddTaskViewState extends State<AddTaskView> {
             editing: (todo) {
               titleController.text = todo.name;
               textController.text = todo.description;
-              return createScreen();
+              return createScreen(context);
             },
-            creating: createScreen,
+            creating: () => createScreen(context),
           );
         },
       ),
     );
   }
 
-  Widget createScreen() {
+  Widget createScreen(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
