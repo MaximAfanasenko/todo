@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/base/router/router.dart';
 import 'package:todo/theme/app_theme.dart';
-import 'package:todo/theme/app_inherited_widget.dart';
+import 'package:todo/theme/theme_inherited_widget.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
