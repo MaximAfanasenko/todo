@@ -15,307 +15,6 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TasksState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<Todo> todos) data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<Todo> todos)? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Todo> todos)? data,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DataState value) data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DataState value)? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_DataState value)? data,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TasksStateCopyWith<$Res> {
-  factory $TasksStateCopyWith(
-          TasksState value, $Res Function(TasksState) then) =
-      _$TasksStateCopyWithImpl<$Res, TasksState>;
-}
-
-/// @nodoc
-class _$TasksStateCopyWithImpl<$Res, $Val extends TasksState>
-    implements $TasksStateCopyWith<$Res> {
-  _$TasksStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadingStateImplCopyWith<$Res> {
-  factory _$$LoadingStateImplCopyWith(
-          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
-      __$$LoadingStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingStateImplCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$LoadingStateImpl>
-    implements _$$LoadingStateImplCopyWith<$Res> {
-  __$$LoadingStateImplCopyWithImpl(
-      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingStateImpl implements _LoadingState {
-  _$LoadingStateImpl();
-
-  @override
-  String toString() {
-    return 'TasksState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<Todo> todos) data,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<Todo> todos)? data,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Todo> todos)? data,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DataState value) data,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DataState value)? data,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_DataState value)? data,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingState implements TasksState {
-  factory _LoadingState() = _$LoadingStateImpl;
-}
-
-/// @nodoc
-abstract class _$$DataStateImplCopyWith<$Res> {
-  factory _$$DataStateImplCopyWith(
-          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
-      __$$DataStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Todo> todos});
-}
-
-/// @nodoc
-class __$$DataStateImplCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$DataStateImpl>
-    implements _$$DataStateImplCopyWith<$Res> {
-  __$$DataStateImplCopyWithImpl(
-      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? todos = null,
-  }) {
-    return _then(_$DataStateImpl(
-      null == todos
-          ? _value._todos
-          : todos // ignore: cast_nullable_to_non_nullable
-              as List<Todo>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DataStateImpl implements _DataState {
-  _$DataStateImpl(final List<Todo> todos) : _todos = todos;
-
-  final List<Todo> _todos;
-  @override
-  List<Todo> get todos {
-    if (_todos is EqualUnmodifiableListView) return _todos;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_todos);
-  }
-
-  @override
-  String toString() {
-    return 'TasksState.data(todos: $todos)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataStateImpl &&
-            const DeepCollectionEquality().equals(other._todos, _todos));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todos));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
-      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<Todo> todos) data,
-  }) {
-    return data(todos);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<Todo> todos)? data,
-  }) {
-    return data?.call(todos);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Todo> todos)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(todos);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_DataState value) data,
-  }) {
-    return data(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_DataState value)? data,
-  }) {
-    return data?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_DataState value)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DataState implements TasksState {
-  factory _DataState(final List<Todo> todos) = _$DataStateImpl;
-
-  List<Todo> get todos;
-  @JsonKey(ignore: true)
-  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$TasksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -770,5 +469,306 @@ abstract class _DeleteTodo implements TasksEvent {
   Todo get todo;
   @JsonKey(ignore: true)
   _$$DeleteTodoImplCopyWith<_$DeleteTodoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$TasksState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Todo> todos) data,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Todo> todos)? data,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Todo> todos)? data,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_DataState value) data,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_DataState value)? data,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TasksStateCopyWith<$Res> {
+  factory $TasksStateCopyWith(
+          TasksState value, $Res Function(TasksState) then) =
+      _$TasksStateCopyWithImpl<$Res, TasksState>;
+}
+
+/// @nodoc
+class _$TasksStateCopyWithImpl<$Res, $Val extends TasksState>
+    implements $TasksStateCopyWith<$Res> {
+  _$TasksStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingStateImpl implements _LoadingState {
+  _$LoadingStateImpl();
+
+  @override
+  String toString() {
+    return 'TasksState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Todo> todos) data,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Todo> todos)? data,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Todo> todos)? data,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_DataState value) data,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingState implements TasksState {
+  factory _LoadingState() = _$LoadingStateImpl;
+}
+
+/// @nodoc
+abstract class _$$DataStateImplCopyWith<$Res> {
+  factory _$$DataStateImplCopyWith(
+          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
+      __$$DataStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Todo> todos});
+}
+
+/// @nodoc
+class __$$DataStateImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$DataStateImpl>
+    implements _$$DataStateImplCopyWith<$Res> {
+  __$$DataStateImplCopyWithImpl(
+      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? todos = null,
+  }) {
+    return _then(_$DataStateImpl(
+      null == todos
+          ? _value._todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DataStateImpl implements _DataState {
+  _$DataStateImpl(final List<Todo> todos) : _todos = todos;
+
+  final List<Todo> _todos;
+  @override
+  List<Todo> get todos {
+    if (_todos is EqualUnmodifiableListView) return _todos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_todos);
+  }
+
+  @override
+  String toString() {
+    return 'TasksState.data(todos: $todos)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataStateImpl &&
+            const DeepCollectionEquality().equals(other._todos, _todos));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todos));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Todo> todos) data,
+  }) {
+    return data(todos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Todo> todos)? data,
+  }) {
+    return data?.call(todos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Todo> todos)? data,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(todos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_DataState value) data,
+  }) {
+    return data(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return data?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DataState implements TasksState {
+  factory _DataState(final List<Todo> todos) = _$DataStateImpl;
+
+  List<Todo> get todos;
+  @JsonKey(ignore: true)
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

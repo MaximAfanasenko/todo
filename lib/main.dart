@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/app.dart';
 import 'package:todo/base/di/di.dart';
-import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,7 @@ void main() async {
       path:
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: const Locale('ru', 'RU'),
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }

@@ -7,6 +7,7 @@ import 'package:todo/base/di/di.dart';
 import 'package:todo/features/profile/bloc/profile_bloc.dart';
 import 'package:todo/features/profile/language_bottom_sheet.dart';
 import 'package:todo/generated/locale_keys.g.dart';
+import 'package:todo/theme/app_inherited_widget.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -57,7 +58,7 @@ class _ProfileViewState extends State<ProfileView> {
 
   Widget buildProfileView(BuildContext context, Uint8List imageBytes) {
     return SingleChildScrollView(
-      child: Padding(
+        child: Padding(
         padding: const EdgeInsets.only(right: 20, left: 20),
         child: Column(
           children: [
@@ -116,6 +117,18 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                 },
                 child: Text(LocaleKeys.save.tr()),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 56,
+              child: ElevatedButton(
+                onPressed: () => {
+                  ThemeInheritedWidget.of(context)!.toggleThemeMode()
+                },
+                child: Text("Переключить тему"),
               ),
             ),
             const SizedBox(

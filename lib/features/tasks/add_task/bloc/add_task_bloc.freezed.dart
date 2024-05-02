@@ -15,6 +15,471 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$AddTaskEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function(String title, String description) saveTodo,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function(String title, String description)? saveTodo,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function(String title, String description)? saveTodo,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadDataEvent value) loadData,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadDataEvent value)? loadData,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadDataEvent value)? loadData,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddTaskEventCopyWith<$Res> {
+  factory $AddTaskEventCopyWith(
+          AddTaskEvent value, $Res Function(AddTaskEvent) then) =
+      _$AddTaskEventCopyWithImpl<$Res, AddTaskEvent>;
+}
+
+/// @nodoc
+class _$AddTaskEventCopyWithImpl<$Res, $Val extends AddTaskEvent>
+    implements $AddTaskEventCopyWith<$Res> {
+  _$AddTaskEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoadDataEventImplCopyWith<$Res> {
+  factory _$$LoadDataEventImplCopyWith(
+          _$LoadDataEventImpl value, $Res Function(_$LoadDataEventImpl) then) =
+      __$$LoadDataEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadDataEventImplCopyWithImpl<$Res>
+    extends _$AddTaskEventCopyWithImpl<$Res, _$LoadDataEventImpl>
+    implements _$$LoadDataEventImplCopyWith<$Res> {
+  __$$LoadDataEventImplCopyWithImpl(
+      _$LoadDataEventImpl _value, $Res Function(_$LoadDataEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadDataEventImpl implements _LoadDataEvent {
+  _$LoadDataEventImpl();
+
+  @override
+  String toString() {
+    return 'AddTaskEvent.loadData()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadDataEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function(String title, String description) saveTodo,
+  }) {
+    return loadData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function(String title, String description)? saveTodo,
+  }) {
+    return loadData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function(String title, String description)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (loadData != null) {
+      return loadData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadDataEvent value) loadData,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
+  }) {
+    return loadData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadDataEvent value)? loadData,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
+  }) {
+    return loadData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadDataEvent value)? loadData,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (loadData != null) {
+      return loadData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadDataEvent implements AddTaskEvent {
+  factory _LoadDataEvent() = _$LoadDataEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SetDateTimeEventImplCopyWith<$Res> {
+  factory _$$SetDateTimeEventImplCopyWith(_$SetDateTimeEventImpl value,
+          $Res Function(_$SetDateTimeEventImpl) then) =
+      __$$SetDateTimeEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime dateTime});
+}
+
+/// @nodoc
+class __$$SetDateTimeEventImplCopyWithImpl<$Res>
+    extends _$AddTaskEventCopyWithImpl<$Res, _$SetDateTimeEventImpl>
+    implements _$$SetDateTimeEventImplCopyWith<$Res> {
+  __$$SetDateTimeEventImplCopyWithImpl(_$SetDateTimeEventImpl _value,
+      $Res Function(_$SetDateTimeEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateTime = null,
+  }) {
+    return _then(_$SetDateTimeEventImpl(
+      null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
+  _$SetDateTimeEventImpl(this.dateTime);
+
+  @override
+  final DateTime dateTime;
+
+  @override
+  String toString() {
+    return 'AddTaskEvent.setDateTime(dateTime: $dateTime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetDateTimeEventImpl &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dateTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
+      __$$SetDateTimeEventImplCopyWithImpl<_$SetDateTimeEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function(String title, String description) saveTodo,
+  }) {
+    return setDateTime(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function(String title, String description)? saveTodo,
+  }) {
+    return setDateTime?.call(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function(String title, String description)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (setDateTime != null) {
+      return setDateTime(dateTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadDataEvent value) loadData,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
+  }) {
+    return setDateTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadDataEvent value)? loadData,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
+  }) {
+    return setDateTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadDataEvent value)? loadData,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (setDateTime != null) {
+      return setDateTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetDateTimeEvent implements AddTaskEvent {
+  factory _SetDateTimeEvent(final DateTime dateTime) = _$SetDateTimeEventImpl;
+
+  DateTime get dateTime;
+  @JsonKey(ignore: true)
+  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveTodoEventImplCopyWith<$Res> {
+  factory _$$SaveTodoEventImplCopyWith(
+          _$SaveTodoEventImpl value, $Res Function(_$SaveTodoEventImpl) then) =
+      __$$SaveTodoEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title, String description});
+}
+
+/// @nodoc
+class __$$SaveTodoEventImplCopyWithImpl<$Res>
+    extends _$AddTaskEventCopyWithImpl<$Res, _$SaveTodoEventImpl>
+    implements _$$SaveTodoEventImplCopyWith<$Res> {
+  __$$SaveTodoEventImplCopyWithImpl(
+      _$SaveTodoEventImpl _value, $Res Function(_$SaveTodoEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? description = null,
+  }) {
+    return _then(_$SaveTodoEventImpl(
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveTodoEventImpl implements _SaveTodoEvent {
+  _$SaveTodoEventImpl(this.title, this.description);
+
+  @override
+  final String title;
+  @override
+  final String description;
+
+  @override
+  String toString() {
+    return 'AddTaskEvent.saveTodo(title: $title, description: $description)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveTodoEventImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, description);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
+      __$$SaveTodoEventImplCopyWithImpl<_$SaveTodoEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(DateTime dateTime) setDateTime,
+    required TResult Function(String title, String description) saveTodo,
+  }) {
+    return saveTodo(title, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(DateTime dateTime)? setDateTime,
+    TResult? Function(String title, String description)? saveTodo,
+  }) {
+    return saveTodo?.call(title, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(DateTime dateTime)? setDateTime,
+    TResult Function(String title, String description)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (saveTodo != null) {
+      return saveTodo(title, description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadDataEvent value) loadData,
+    required TResult Function(_SetDateTimeEvent value) setDateTime,
+    required TResult Function(_SaveTodoEvent value) saveTodo,
+  }) {
+    return saveTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadDataEvent value)? loadData,
+    TResult? Function(_SetDateTimeEvent value)? setDateTime,
+    TResult? Function(_SaveTodoEvent value)? saveTodo,
+  }) {
+    return saveTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadDataEvent value)? loadData,
+    TResult Function(_SetDateTimeEvent value)? setDateTime,
+    TResult Function(_SaveTodoEvent value)? saveTodo,
+    required TResult orElse(),
+  }) {
+    if (saveTodo != null) {
+      return saveTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveTodoEvent implements AddTaskEvent {
+  factory _SaveTodoEvent(final String title, final String description) =
+      _$SaveTodoEventImpl;
+
+  String get title;
+  String get description;
+  @JsonKey(ignore: true)
+  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AddTaskState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -571,469 +1036,4 @@ class _$CompletedStateImpl implements _CompletedState {
 
 abstract class _CompletedState implements AddTaskState {
   factory _CompletedState() = _$CompletedStateImpl;
-}
-
-/// @nodoc
-mixin _$AddTaskEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadData,
-    required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function(String title, String description) saveTodo,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadData,
-    TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function(String title, String description)? saveTodo,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadData,
-    TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function(String title, String description)? saveTodo,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadDataEvent value) loadData,
-    required TResult Function(_SetDateTimeEvent value) setDateTime,
-    required TResult Function(_SaveTodoEvent value) saveTodo,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadDataEvent value)? loadData,
-    TResult? Function(_SetDateTimeEvent value)? setDateTime,
-    TResult? Function(_SaveTodoEvent value)? saveTodo,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadDataEvent value)? loadData,
-    TResult Function(_SetDateTimeEvent value)? setDateTime,
-    TResult Function(_SaveTodoEvent value)? saveTodo,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AddTaskEventCopyWith<$Res> {
-  factory $AddTaskEventCopyWith(
-          AddTaskEvent value, $Res Function(AddTaskEvent) then) =
-      _$AddTaskEventCopyWithImpl<$Res, AddTaskEvent>;
-}
-
-/// @nodoc
-class _$AddTaskEventCopyWithImpl<$Res, $Val extends AddTaskEvent>
-    implements $AddTaskEventCopyWith<$Res> {
-  _$AddTaskEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadDataEventImplCopyWith<$Res> {
-  factory _$$LoadDataEventImplCopyWith(
-          _$LoadDataEventImpl value, $Res Function(_$LoadDataEventImpl) then) =
-      __$$LoadDataEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadDataEventImplCopyWithImpl<$Res>
-    extends _$AddTaskEventCopyWithImpl<$Res, _$LoadDataEventImpl>
-    implements _$$LoadDataEventImplCopyWith<$Res> {
-  __$$LoadDataEventImplCopyWithImpl(
-      _$LoadDataEventImpl _value, $Res Function(_$LoadDataEventImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadDataEventImpl implements _LoadDataEvent {
-  _$LoadDataEventImpl();
-
-  @override
-  String toString() {
-    return 'AddTaskEvent.loadData()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadDataEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadData,
-    required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function(String title, String description) saveTodo,
-  }) {
-    return loadData();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadData,
-    TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function(String title, String description)? saveTodo,
-  }) {
-    return loadData?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadData,
-    TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function(String title, String description)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadDataEvent value) loadData,
-    required TResult Function(_SetDateTimeEvent value) setDateTime,
-    required TResult Function(_SaveTodoEvent value) saveTodo,
-  }) {
-    return loadData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadDataEvent value)? loadData,
-    TResult? Function(_SetDateTimeEvent value)? setDateTime,
-    TResult? Function(_SaveTodoEvent value)? saveTodo,
-  }) {
-    return loadData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadDataEvent value)? loadData,
-    TResult Function(_SetDateTimeEvent value)? setDateTime,
-    TResult Function(_SaveTodoEvent value)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadDataEvent implements AddTaskEvent {
-  factory _LoadDataEvent() = _$LoadDataEventImpl;
-}
-
-/// @nodoc
-abstract class _$$SetDateTimeEventImplCopyWith<$Res> {
-  factory _$$SetDateTimeEventImplCopyWith(_$SetDateTimeEventImpl value,
-          $Res Function(_$SetDateTimeEventImpl) then) =
-      __$$SetDateTimeEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({DateTime dateTime});
-}
-
-/// @nodoc
-class __$$SetDateTimeEventImplCopyWithImpl<$Res>
-    extends _$AddTaskEventCopyWithImpl<$Res, _$SetDateTimeEventImpl>
-    implements _$$SetDateTimeEventImplCopyWith<$Res> {
-  __$$SetDateTimeEventImplCopyWithImpl(_$SetDateTimeEventImpl _value,
-      $Res Function(_$SetDateTimeEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? dateTime = null,
-  }) {
-    return _then(_$SetDateTimeEventImpl(
-      null == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SetDateTimeEventImpl implements _SetDateTimeEvent {
-  _$SetDateTimeEventImpl(this.dateTime);
-
-  @override
-  final DateTime dateTime;
-
-  @override
-  String toString() {
-    return 'AddTaskEvent.setDateTime(dateTime: $dateTime)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetDateTimeEventImpl &&
-            (identical(other.dateTime, dateTime) ||
-                other.dateTime == dateTime));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, dateTime);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
-      __$$SetDateTimeEventImplCopyWithImpl<_$SetDateTimeEventImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadData,
-    required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function(String title, String description) saveTodo,
-  }) {
-    return setDateTime(dateTime);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadData,
-    TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function(String title, String description)? saveTodo,
-  }) {
-    return setDateTime?.call(dateTime);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadData,
-    TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function(String title, String description)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (setDateTime != null) {
-      return setDateTime(dateTime);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadDataEvent value) loadData,
-    required TResult Function(_SetDateTimeEvent value) setDateTime,
-    required TResult Function(_SaveTodoEvent value) saveTodo,
-  }) {
-    return setDateTime(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadDataEvent value)? loadData,
-    TResult? Function(_SetDateTimeEvent value)? setDateTime,
-    TResult? Function(_SaveTodoEvent value)? saveTodo,
-  }) {
-    return setDateTime?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadDataEvent value)? loadData,
-    TResult Function(_SetDateTimeEvent value)? setDateTime,
-    TResult Function(_SaveTodoEvent value)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (setDateTime != null) {
-      return setDateTime(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SetDateTimeEvent implements AddTaskEvent {
-  factory _SetDateTimeEvent(final DateTime dateTime) = _$SetDateTimeEventImpl;
-
-  DateTime get dateTime;
-  @JsonKey(ignore: true)
-  _$$SetDateTimeEventImplCopyWith<_$SetDateTimeEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SaveTodoEventImplCopyWith<$Res> {
-  factory _$$SaveTodoEventImplCopyWith(
-          _$SaveTodoEventImpl value, $Res Function(_$SaveTodoEventImpl) then) =
-      __$$SaveTodoEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String title, String description});
-}
-
-/// @nodoc
-class __$$SaveTodoEventImplCopyWithImpl<$Res>
-    extends _$AddTaskEventCopyWithImpl<$Res, _$SaveTodoEventImpl>
-    implements _$$SaveTodoEventImplCopyWith<$Res> {
-  __$$SaveTodoEventImplCopyWithImpl(
-      _$SaveTodoEventImpl _value, $Res Function(_$SaveTodoEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? description = null,
-  }) {
-    return _then(_$SaveTodoEventImpl(
-      null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SaveTodoEventImpl implements _SaveTodoEvent {
-  _$SaveTodoEventImpl(this.title, this.description);
-
-  @override
-  final String title;
-  @override
-  final String description;
-
-  @override
-  String toString() {
-    return 'AddTaskEvent.saveTodo(title: $title, description: $description)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SaveTodoEventImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, title, description);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
-      __$$SaveTodoEventImplCopyWithImpl<_$SaveTodoEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadData,
-    required TResult Function(DateTime dateTime) setDateTime,
-    required TResult Function(String title, String description) saveTodo,
-  }) {
-    return saveTodo(title, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadData,
-    TResult? Function(DateTime dateTime)? setDateTime,
-    TResult? Function(String title, String description)? saveTodo,
-  }) {
-    return saveTodo?.call(title, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadData,
-    TResult Function(DateTime dateTime)? setDateTime,
-    TResult Function(String title, String description)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (saveTodo != null) {
-      return saveTodo(title, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadDataEvent value) loadData,
-    required TResult Function(_SetDateTimeEvent value) setDateTime,
-    required TResult Function(_SaveTodoEvent value) saveTodo,
-  }) {
-    return saveTodo(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadDataEvent value)? loadData,
-    TResult? Function(_SetDateTimeEvent value)? setDateTime,
-    TResult? Function(_SaveTodoEvent value)? saveTodo,
-  }) {
-    return saveTodo?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadDataEvent value)? loadData,
-    TResult Function(_SetDateTimeEvent value)? setDateTime,
-    TResult Function(_SaveTodoEvent value)? saveTodo,
-    required TResult orElse(),
-  }) {
-    if (saveTodo != null) {
-      return saveTodo(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SaveTodoEvent implements AddTaskEvent {
-  factory _SaveTodoEvent(final String title, final String description) =
-      _$SaveTodoEventImpl;
-
-  String get title;
-  String get description;
-  @JsonKey(ignore: true)
-  _$$SaveTodoEventImplCopyWith<_$SaveTodoEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

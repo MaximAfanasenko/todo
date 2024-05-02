@@ -28,15 +28,19 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    gh.singleton<_i3.Cache>(_i3.Cache()..init());
+    gh.singletonAsync<_i3.Cache>(() {
+      final i = _i3.Cache();
+      return i.init().then((_) => i);
+    });
     gh.singleton<_i4.ImagePickerService>(_i4.ImagePickerService());
-    gh.singleton<_i5.ProfileCache>(
-        _i5.ProfileCache(cache: gh<_i3.Cache>()));
-    gh.singleton<_i6.ProfileService>(
-        _i6.ProfileService(profileCache: gh<_i5.ProfileCache>()));
-    gh.singleton<_i7.TasksCache>(_i7.TasksCache(cache: gh<_i3.Cache>()));
-    gh.singleton<_i8.TasksService>(
-        _i8.TasksService(tasksCache: gh<_i7.TasksCache>()));
+    gh.singletonAsync<_i5.ProfileCache>(
+        () async => _i5.ProfileCache(cache: await getAsync<_i3.Cache>()));
+    gh.singletonAsync<_i6.ProfileService>(() async =>
+        _i6.ProfileService(profileCache: await getAsync<_i5.ProfileCache>()));
+    gh.singletonAsync<_i7.TasksCache>(
+        () async => _i7.TasksCache(cache: await getAsync<_i3.Cache>()));
+    gh.singletonAsync<_i8.TasksService>(() async =>
+        _i8.TasksService(tasksCache: await getAsync<_i7.TasksCache>()));
     return this;
   }
 }
