@@ -33,7 +33,8 @@ class CodegenLoader extends AssetLoader{
   "chooseDate": "Выбрать дату",
   "createTask": "Создать задачу",
   "list": "Список",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "changeTheme": "Сменить тему"
 };
 static const Map<String,dynamic> en_EN = {
   "appName": "TODO",
@@ -54,7 +55,8 @@ static const Map<String,dynamic> en_EN = {
   "chooseDate": "Choose date",
   "createTask": "Create task",
   "list": "List",
-  "profile": "Profile"
+  "profile": "Profile",
+  "changeTheme": "Change theme"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru_RU": ru_RU, "en_EN": en_EN};
 }

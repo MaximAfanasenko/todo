@@ -128,7 +128,7 @@ class _ProfileViewState extends State<ProfileView> {
                 onPressed: () => {
                   ThemeInheritedWidget.of(context)!.toggleThemeMode()
                 },
-                child: Text("Переключить тему"),
+                child: Text(LocaleKeys.changeTheme.tr()),
               ),
             ),
             const SizedBox(

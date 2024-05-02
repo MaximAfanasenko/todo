@@ -17,5 +17,6 @@
   "chooseDate" : "Choose date",
   "createTask" : "Create task",
   "list" : "List",
-  "profile" : "Profile"
+  "profile" : "Profile",
+  "changeTheme" : "Change theme"
 }

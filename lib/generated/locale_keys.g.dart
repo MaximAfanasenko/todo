@@ -20,5 +20,6 @@ abstract class  LocaleKeys {
   static const createTask = 'createTask';
   static const list = 'list';
   static const profile = 'profile';
+  static const changeTheme = 'changeTheme';
 
 }

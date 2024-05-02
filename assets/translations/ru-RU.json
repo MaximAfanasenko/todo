@@ -17,5 +17,6 @@
   "chooseDate" : "Выбрать дату",
   "createTask" : "Создать задачу",
   "list" : "Список",
-  "profile" : "Профиль"
+  "profile" : "Профиль",
+  "changeTheme" : "Сменить тему"
 }
